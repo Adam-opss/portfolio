@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme (default) - rgb channels for Tailwind alpha support */
+    --bg: 8 8 9;
+    --surface: 18 18 20;
+    --surface-2: 26 26 29;
+    --border: 41 41 46;
+    --muted: 145 147 153;
+    --foreground: 244 244 246;
+
+    /* Monochrome "brushed-metal" palette - slot names kept (blue/purple/cyan)
+       so all utility classes keep working; values are white/silver/grey.
+       --on-accent is the text colour placed on top of filled accent surfaces. */
+    --accent-blue: 245 245 247; /* near-white (primary) */
+    --accent-purple: 161 161 170; /* zinc-400 (mid grey) */
+    --accent-cyan: 212 212 216; /* zinc-300 (light grey) */
+    --on-accent: 10 10 12; /* near-black text on light fills */
+  }
+
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--foreground));
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Tighter, more deliberate display headings + balanced wrapping. */
+  .font-display {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h1.font-display,
+  .font-display.text-5xl,
+  .font-display.text-6xl,
+  .font-display.text-7xl {
+    letter-spacing: -0.035em;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 9999px;
+    border: 2px solid rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--muted));
+  }
+
+  ::selection {
+    background: rgb(var(--accent-blue) / 0.3);
+    color: rgb(var(--foreground));
+  }
+
+  /* Hide native cursor on desktop where the custom one is active */
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+    a,
+    button,
+    input,
+    textarea,
+    [role="button"] {
+      cursor: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    body {
+      cursor: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgb(var(--surface) / 0.6);
+    backdrop-filter: blur(16px);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Glowing border used on premium cards */
+  .glow-border {
+    position: relative;
+  }
+  .glow-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgb(var(--accent-blue) / 0.6),
+      transparent 40%,
+      transparent 60%,
+      rgb(var(--accent-purple) / 0.6)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+}
