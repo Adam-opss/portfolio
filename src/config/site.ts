@@ -7,7 +7,7 @@ export const site = {
   description: portfolio.person.tagline,
   // Deployed domain (used for canonical, sitemap, robots, structured data).
   // Update this if you later attach a custom domain.
-  url: "https://portfolio-weld-eight-26.vercel.app",
+  url: "https://adampalo.vercel.app",
   ogImage: "/og.png",
   locale: "en_US",
   keywords: [
