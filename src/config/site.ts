@@ -5,8 +5,9 @@ export const site = {
   name: portfolio.person.name,
   title: `${portfolio.person.name} · ${portfolio.person.title}`,
   description: portfolio.person.tagline,
-  // Update to your deployed domain (used for canonical + OG URLs).
-  url: "https://adampalo.dev",
+  // Deployed domain (used for canonical, sitemap, robots, structured data).
+  // Update this if you later attach a custom domain.
+  url: "https://portfolio-weld-eight-26.vercel.app",
   ogImage: "/og.png",
   locale: "en_US",
   keywords: [
