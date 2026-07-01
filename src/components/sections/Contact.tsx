@@ -9,6 +9,7 @@ import {
   Send,
   Loader2,
   Sparkles,
+  Download,
 } from "lucide-react";
 import { portfolio } from "@/config/portfolio";
 import { Section } from "@/components/ui/Section";
@@ -102,6 +103,16 @@ export function Contact() {
                 })}
               </div>
             </div>
+
+            {portfolio.person.resumeUrl && (
+              <a
+                href={portfolio.person.resumeUrl}
+                download="Adam_Palo_CV.pdf"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface-2/60 px-4 py-3 text-sm font-medium text-foreground transition hover:border-accent-blue/50 hover:text-accent-blue"
+              >
+                <Download className="h-4 w-4" /> Download CV
+              </a>
+            )}
           </div>
 
           <div className="flex items-center gap-3 rounded-2xl border border-border bg-surface/40 p-4 text-sm text-muted">
