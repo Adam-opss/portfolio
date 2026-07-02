@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Typewriter } from "@/components/ui/Typewriter";
 import { AnimatedHeadline } from "@/components/ui/AnimatedHeadline";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -15,7 +15,8 @@ export function Hero() {
   const y = useTransform(scrollY, [0, 700], [0, 120]);
   const opacity = useTransform(scrollY, [0, 560], [1, 0]);
 
-  const { person, social } = portfolio;
+  const { content, ui } = useLanguage();
+  const { person, social } = content;
 
   return (
     <section
@@ -74,9 +75,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.25 }}
           className="mt-6 text-justify text-base leading-relaxed text-muted sm:text-lg"
         >
-          {person.tagline} I work across machine learning, business intelligence,
-          and data visualization, making messy datasets clear, and clear data
-          actionable.
+          {person.tagline} {ui.hero.lead}
         </motion.p>
 
         {/* CTAs */}
@@ -93,7 +92,7 @@ export function Hero() {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            View Projects
+            {ui.hero.viewProjects}
             <ArrowRight className="h-4 w-4" />
           </MagneticButton>
           <MagneticButton
@@ -105,7 +104,7 @@ export function Hero() {
             }
           >
             <Mail className="h-4 w-4" />
-            Get in touch
+            {ui.hero.getInTouch}
           </MagneticButton>
         </motion.div>
 

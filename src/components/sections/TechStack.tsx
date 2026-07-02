@@ -2,14 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { Tag } from "@/components/ui/Badge";
 import { Marquee } from "@/components/ui/Marquee";
 import { getIcon } from "@/lib/icons";
 
 export function TechStack() {
-  const { techStack } = portfolio;
+  const { content, ui } = useLanguage();
+  const { techStack } = content;
 
   const categories = useMemo(() => {
     const set = new Set(techStack.map((t) => t.category));
@@ -26,10 +27,10 @@ export function TechStack() {
     <Section
       id="stack"
       index={6}
-      eyebrow="Toolbox"
-      title="Tech"
-      titleAccent="stack"
-      description="The languages, frameworks, and platforms I reach for."
+      eyebrow={ui.stack.eyebrow}
+      title={ui.stack.title}
+      titleAccent={ui.stack.titleAccent}
+      description={ui.stack.description}
     >
       <div className="mb-10">
         <Marquee items={techStack} />
@@ -38,7 +39,7 @@ export function TechStack() {
       <div className="mb-8 flex flex-wrap gap-2">
         {categories.map((c) => (
           <Tag key={c} active={filter === c} onClick={() => setFilter(c)}>
-            {c}
+            {c === "All" ? ui.stack.all : c}
           </Tag>
         ))}
       </div>

@@ -2,21 +2,22 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, Sparkle } from "lucide-react";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 export function Education() {
-  const { education } = portfolio;
+  const { content, ui } = useLanguage();
+  const { education } = content;
 
   return (
     <Section
       id="education"
       index={5}
-      eyebrow="Academics"
-      title="Education &"
-      titleAccent="learning"
-      description="My academic foundation in data, mathematics, and computer science."
+      eyebrow={ui.education.eyebrow}
+      title={ui.education.title}
+      titleAccent={ui.education.titleAccent}
+      description={ui.education.description}
     >
       <div className="grid gap-6 lg:grid-cols-3">
         {education.map((item, i) => (

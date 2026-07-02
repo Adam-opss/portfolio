@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { GradientText } from "@/components/ui/GradientText";
@@ -10,7 +10,8 @@ import { Avatar } from "@/components/ui/Avatar";
 import { getIcon } from "@/lib/icons";
 
 export function About() {
-  const { person, stats } = portfolio;
+  const { content, ui } = useLanguage();
+  const { person, stats } = content;
   const highlightStats = stats.slice(0, 4);
 
   return (
@@ -26,19 +27,20 @@ export function About() {
                   01
                 </span>
                 <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
-                  About me
+                  {ui.about.eyebrow}
                 </span>
                 <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
               </div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                A bit about <GradientText>who I am</GradientText>
+                {ui.about.title}{" "}
+                <GradientText>{ui.about.titleAccent}</GradientText>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-                Data-driven, design-minded, and relentlessly curious.
+                {ui.about.subtitle}
               </p>
             </Reveal>
           </div>
@@ -82,9 +84,9 @@ export function About() {
           <Reveal delay={0.3}>
             <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
               {[
-                ["Location", person.location],
-                ["Email", person.email],
-                ["Availability", person.availability],
+                [ui.about.location, person.location],
+                [ui.about.email, person.email],
+                [ui.about.availability, person.availability],
               ].map(([label, value]) => (
                 <div key={label} className="bg-surface/60 p-4">
                   <dt className="text-xs uppercase tracking-widest text-muted">

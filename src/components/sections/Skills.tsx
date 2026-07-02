@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 export function Skills() {
-  const { skills } = portfolio;
+  const { content, ui } = useLanguage();
+  const { skills } = content;
   const [activeId, setActiveId] = useState(skills[0]?.id ?? "");
   const active = skills.find((c) => c.id === activeId) ?? skills[0];
 
@@ -17,10 +18,10 @@ export function Skills() {
     <Section
       id="skills"
       index={2}
-      eyebrow="Capabilities"
-      title="Skills &"
-      titleAccent="expertise"
-      description="A focused toolkit spanning the full analytics lifecycle, from raw data to deployed insight."
+      eyebrow={ui.skills.eyebrow}
+      title={ui.skills.title}
+      titleAccent={ui.skills.titleAccent}
+      description={ui.skills.description}
     >
       {/* Category tabs */}
       <div className="mb-10 flex flex-wrap gap-2">
@@ -77,7 +78,7 @@ export function Skills() {
                       <Icon className="h-5 w-5" />
                     </div>
                     <span className="rounded-full bg-surface-2/60 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted">
-                      {skill.proficiency}
+                      {ui.skills.proficiency[skill.proficiency]}
                     </span>
                   </div>
                   <p className="font-medium text-foreground">{skill.name}</p>

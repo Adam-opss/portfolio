@@ -3,22 +3,24 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Briefcase, MapPin, CheckCircle2 } from "lucide-react";
-import { portfolio, type ExperienceItem } from "@/config/portfolio";
+import { type ExperienceItem } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { cn } from "@/lib/utils";
 
 export function Experience() {
-  const { experience } = portfolio;
+  const { content, ui } = useLanguage();
+  const { experience } = content;
   const [openId, setOpenId] = useState<string | null>(experience[0]?.id ?? null);
 
   return (
     <Section
       id="experience"
       index={4}
-      eyebrow="Career"
-      title="Work"
-      titleAccent="experience"
-      description="Where I've applied data and automation to real-world problems."
+      eyebrow={ui.experience.eyebrow}
+      title={ui.experience.title}
+      titleAccent={ui.experience.titleAccent}
+      description={ui.experience.description}
     >
       <div className="relative">
         {/* Vertical line */}
@@ -51,6 +53,7 @@ function TimelineCard({
   open: boolean;
   onToggle: () => void;
 }) {
+  const { ui } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -88,7 +91,8 @@ function TimelineCard({
             </div>
             <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
               <span className="rounded-full bg-surface-2/60 px-2 py-0.5 font-mono">
-                {item.start} - {item.end}
+                {item.start} -{" "}
+                {item.end === "Present" ? ui.experience.present : item.end}
               </span>
               <span className="flex items-center gap-1">
                 <MapPin className="h-3 w-3" />

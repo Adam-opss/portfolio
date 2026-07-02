@@ -2,21 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Command } from "lucide-react";
-import { site } from "@/config/site";
-import { portfolio } from "@/config/portfolio";
+import { Menu, X, Command, Languages } from "lucide-react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { useCommandPalette } from "@/components/providers/CommandPalette";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { uiStrings } from "@/config/i18n";
 import { useLockBody } from "@/hooks/useLockBody";
 import { cn } from "@/lib/utils";
 
-const navIds = site.nav.map((n) => n.id);
+// Section ids are language-independent, so a stable list is fine for scroll-spy.
+const navIds = uiStrings.en.nav.map((n) => n.id);
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const active = useScrollSpy(navIds);
   const { toggle: togglePalette } = useCommandPalette();
+  const { content, ui, lang, toggle: toggleLang } = useLanguage();
   useLockBody(menuOpen);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const initials = portfolio.person.name
+  const initials = content.person.name
     .split(" ")
     .map((w) => w[0])
     .join("");
@@ -61,13 +63,13 @@ export function Navbar() {
             {initials}
           </span>
           <span className="hidden font-display text-sm font-semibold text-foreground sm:block">
-            {portfolio.person.name}
+            {content.person.name}
           </span>
         </button>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-1 lg:flex">
-          {site.nav.map((item) => (
+          {ui.nav.map((item) => (
             <li key={item.id}>
               <button
                 onClick={() => go(item.id)}
@@ -99,8 +101,20 @@ export function Navbar() {
             className="hidden items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1.5 text-xs text-muted transition hover:text-foreground sm:flex"
           >
             <Command className="h-3.5 w-3.5" />
-            <span>Search</span>
+            <span>{ui.common.search}</span>
             <kbd className="rounded border border-border px-1 text-[10px]">⌘K</kbd>
+          </button>
+
+          {/* Language toggle */}
+          <button
+            onClick={toggleLang}
+            aria-label={ui.common.language}
+            className="flex h-9 items-center gap-1.5 rounded-full border border-border bg-surface/60 px-3 text-xs font-medium text-muted transition hover:text-foreground"
+          >
+            <Languages className="h-3.5 w-3.5" />
+            <span className="tabular-nums uppercase">
+              {lang === "en" ? "SK" : "EN"}
+            </span>
           </button>
 
           <button
@@ -123,7 +137,7 @@ export function Navbar() {
             className="absolute inset-x-4 top-20 rounded-3xl border border-border bg-surface/90 p-4 shadow-soft backdrop-blur-xl lg:hidden"
           >
             <ul className="grid gap-1">
-              {site.nav.map((item, i) => (
+              {ui.nav.map((item, i) => (
                 <motion.li
                   key={item.id}
                   initial={{ opacity: 0, x: -10 }}

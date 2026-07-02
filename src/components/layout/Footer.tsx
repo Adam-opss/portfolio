@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { portfolio } from "@/config/portfolio";
-import { site } from "@/config/site";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { getIcon } from "@/lib/icons";
 import { GradientText } from "@/components/ui/GradientText";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const { person, social } = portfolio;
+  const { content, ui } = useLanguage();
+  const { person, social } = content;
 
   return (
     <footer className="relative border-t border-border">
@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <Reveal>
           <p className="mb-6 flex items-center gap-3 font-mono text-sm font-medium text-accent-blue">
-            <span className="h-px w-8 bg-accent-blue/50" /> Let&apos;s connect
+            <span className="h-px w-8 bg-accent-blue/50" /> {ui.footer.connect}
           </p>
         </Reveal>
         <Reveal delay={0.05}>
@@ -26,7 +26,7 @@ export function Footer() {
             href={`mailto:${person.email}`}
             className="group inline-flex flex-wrap items-center gap-x-4 font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl"
           >
-            Let&apos;s work <GradientText>together</GradientText>
+            {ui.footer.letsWork} <GradientText>{ui.footer.together}</GradientText>
             <ArrowUpRight className="h-9 w-9 text-muted transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-foreground sm:h-14 sm:w-14" />
           </a>
         </Reveal>
@@ -62,10 +62,10 @@ export function Footer() {
 
           <div>
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted">
-              Navigate
+              {ui.footer.navigate}
             </p>
             <ul className="grid grid-cols-2 gap-y-2 text-sm">
-              {site.nav.map((n) => (
+              {ui.nav.map((n) => (
                 <li key={n.id}>
                   <button
                     onClick={() =>
@@ -84,7 +84,7 @@ export function Footer() {
 
           <div>
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted">
-              Connect
+              {ui.footer.connectHeading}
             </p>
             <div className="flex flex-wrap gap-2">
               {social.map((s) => {
@@ -112,10 +112,10 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted sm:flex-row">
           <p>
-            © {year} {person.name}. All rights reserved.
+            © {year} {person.name}. {ui.footer.rights}
           </p>
           <p>
-            Built with Next.js, Tailwind &amp; Framer Motion · Press{" "}
+            {ui.footer.built}{" "}
             <kbd className="rounded border border-border px-1">⌘K</kbd>
           </p>
         </div>

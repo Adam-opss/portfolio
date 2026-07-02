@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Github, ExternalLink, ArrowUpRight, X, Search } from "lucide-react";
-import { portfolio, type Project } from "@/config/portfolio";
+import { type Project } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ProjectVisual } from "@/components/ui/ProjectVisual";
@@ -11,7 +12,8 @@ import { Tag } from "@/components/ui/Badge";
 import { useLockBody } from "@/hooks/useLockBody";
 
 export function Projects() {
-  const { projects } = portfolio;
+  const { content, ui, lang } = useLanguage();
+  const { projects } = content;
 
   // All unique tags for the filter bar.
   const allTags = useMemo(() => {
@@ -23,6 +25,11 @@ export function Projects() {
   const [filter, setFilter] = useState("All");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Project | null>(null);
+
+  // Tag labels are localized, so reset the filter when the language changes.
+  useEffect(() => {
+    setFilter("All");
+  }, [lang]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -41,17 +48,17 @@ export function Projects() {
     <Section
       id="projects"
       index={3}
-      eyebrow="Selected work"
-      title="Featured"
-      titleAccent="projects"
-      description="A selection of analytics, machine-learning, and BI work, each solving a real problem end to end."
+      eyebrow={ui.projects.eyebrow}
+      title={ui.projects.title}
+      titleAccent={ui.projects.titleAccent}
+      description={ui.projects.description}
     >
       {/* Controls */}
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-2">
           {allTags.map((tag) => (
             <Tag key={tag} active={filter === tag} onClick={() => setFilter(tag)}>
-              {tag}
+              {tag === "All" ? ui.projects.all : tag}
             </Tag>
           ))}
         </div>
@@ -60,7 +67,7 @@ export function Projects() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search projects…"
+            placeholder={ui.projects.searchPlaceholder}
             className="w-40 bg-transparent text-sm text-foreground outline-none placeholder:text-muted"
           />
         </div>
@@ -85,9 +92,7 @@ export function Projects() {
       </motion.div>
 
       {filtered.length === 0 && (
-        <p className="py-16 text-center text-muted">
-          No projects match your filters.
-        </p>
+        <p className="py-16 text-center text-muted">{ui.projects.noResults}</p>
       )}
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />
@@ -102,6 +107,7 @@ function ProjectCard({
   project: Project;
   onOpen: () => void;
 }) {
+  const { ui } = useLanguage();
   return (
     <SpotlightCard className="flex h-full flex-col">
       {/* Cover */}
@@ -118,7 +124,7 @@ function ProjectCard({
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
         {project.featured && (
           <span className="absolute left-3 top-3 rounded-full border border-accent-blue/40 bg-bg/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-accent-blue backdrop-blur">
-            Featured
+            {ui.projects.featured}
           </span>
         )}
         <span className="absolute right-3 top-3 flex h-8 w-8 translate-x-2 items-center justify-center rounded-full border border-border bg-bg/70 text-foreground opacity-0 backdrop-blur transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
@@ -178,7 +184,7 @@ function ProjectCard({
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs text-muted transition hover:border-accent-blue/50 hover:text-foreground"
             >
-              <Github className="h-3.5 w-3.5" /> Code
+              <Github className="h-3.5 w-3.5" /> {ui.projects.code}
             </a>
           )}
           {project.demo && (
@@ -188,14 +194,14 @@ function ProjectCard({
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs text-muted transition hover:border-accent-blue/50 hover:text-foreground"
             >
-              <ExternalLink className="h-3.5 w-3.5" /> Demo
+              <ExternalLink className="h-3.5 w-3.5" /> {ui.projects.demo}
             </a>
           )}
           <button
             onClick={onOpen}
             className="ml-auto text-xs font-medium text-accent-blue hover:underline"
           >
-            Details →
+            {ui.projects.details}
           </button>
         </div>
       </div>
@@ -210,6 +216,7 @@ function ProjectModal({
   project: Project | null;
   onClose: () => void;
 }) {
+  const { ui } = useLanguage();
   useLockBody(Boolean(project));
 
   return (
@@ -286,7 +293,7 @@ function ProjectModal({
 
               <div className="mt-6">
                 <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted">
-                  Tech stack
+                  {ui.projects.techStack}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((t) => (
@@ -308,7 +315,7 @@ function ProjectModal({
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-foreground transition hover:border-accent-blue/50"
                   >
-                    <Github className="h-4 w-4" /> View Code
+                    <Github className="h-4 w-4" /> {ui.projects.viewCode}
                   </a>
                 )}
                 {project.demo && (
@@ -318,7 +325,7 @@ function ProjectModal({
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 rounded-full bg-accent-blue px-4 py-2 text-sm font-medium text-on-accent shadow-glow hover:opacity-90"
                   >
-                    <ExternalLink className="h-4 w-4" /> Live Demo
+                    <ExternalLink className="h-4 w-4" /> {ui.projects.liveDemo}
                   </a>
                 )}
               </div>

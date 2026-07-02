@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { getIcon } from "@/lib/icons";
 
 export function Stats() {
-  const { stats } = portfolio;
+  const { content } = useLanguage();
+  const { stats } = content;
 
   return (
     <section id="stats" className="relative scroll-mt-24 py-20">

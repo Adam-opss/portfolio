@@ -3,6 +3,7 @@ import { Inter, Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/config/site";
 import { portfolio } from "@/config/portfolio";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { CommandPaletteProvider } from "@/components/providers/CommandPalette";
 import { CursorProvider } from "@/components/providers/CursorProvider";
 import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
@@ -111,16 +112,18 @@ export default function RootLayout({
         className={`${inter.variable} ${sora.variable} ${mono.variable} font-sans antialiased`}
       >
         <StructuredData />
-        <CommandPaletteProvider>
-          <LoadingScreen />
-          <AnimatedBackground />
-          <GrainOverlay />
-          <ScrollProgress />
-          <CursorProvider />
-          <Navbar />
-          <main className="relative">{children}</main>
-          <BackToTop />
-        </CommandPaletteProvider>
+        <LanguageProvider>
+          <CommandPaletteProvider>
+            <LoadingScreen />
+            <AnimatedBackground />
+            <GrainOverlay />
+            <ScrollProgress />
+            <CursorProvider />
+            <Navbar />
+            <main className="relative">{children}</main>
+            <BackToTop />
+          </CommandPaletteProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

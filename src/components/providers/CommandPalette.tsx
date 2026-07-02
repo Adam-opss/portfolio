@@ -18,8 +18,7 @@ import {
   ArrowDown,
   Command as CommandIcon,
 } from "lucide-react";
-import { site } from "@/config/site";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useLockBody } from "@/hooks/useLockBody";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
@@ -76,48 +75,49 @@ export function CommandPaletteProvider({ children }: { children: ReactNode }) {
 }
 
 function Palette({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const { content, ui } = useLanguage();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   useLockBody(open);
 
   const commands: Command[] = useMemo(() => {
-    const nav: Command[] = site.nav.map((n) => ({
+    const nav: Command[] = ui.nav.map((n) => ({
       id: `nav-${n.id}`,
-      label: `Go to ${n.label}`,
+      label: `${ui.palette.goTo} ${n.label}`,
       icon: "Radar",
-      group: "Navigation",
+      group: ui.palette.navigation,
       run: () => scrollToId(n.id),
     }));
 
-    const projects: Command[] = portfolio.projects.map((p) => ({
+    const projects: Command[] = content.projects.map((p) => ({
       id: `proj-${p.id}`,
       label: p.title,
-      hint: "Project",
+      hint: ui.palette.project,
       icon: "FolderGit2",
-      group: "Projects",
+      group: ui.palette.projects,
       run: () => scrollToId("projects"),
     }));
 
     const actions: Command[] = [
       {
         id: "email",
-        label: "Copy email address",
+        label: ui.palette.copyEmail,
         icon: "Mail",
-        group: "Actions",
-        run: () => navigator.clipboard?.writeText(portfolio.person.email),
+        group: ui.palette.actions,
+        run: () => navigator.clipboard?.writeText(content.person.email),
       },
-      ...portfolio.social.map((s) => ({
+      ...content.social.map((s) => ({
         id: `social-${s.label}`,
-        label: `Open ${s.label}`,
+        label: `${ui.palette.open} ${s.label}`,
         icon: s.icon,
-        group: "Links",
+        group: ui.palette.links,
         run: () => window.open(s.href, "_blank", "noopener"),
       })),
     ];
 
     return [...nav, ...projects, ...actions];
-  }, []);
+  }, [content, ui]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -199,7 +199,7 @@ function Palette({ open, onClose }: { open: boolean; onClose: () => void }) {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search sections, projects, actions…"
+                placeholder={ui.palette.placeholder}
                 className="w-full bg-transparent py-4 text-sm text-foreground outline-none placeholder:text-muted"
               />
               <kbd className="hidden rounded border border-border px-1.5 py-0.5 text-[10px] text-muted sm:inline">
@@ -210,7 +210,7 @@ function Palette({ open, onClose }: { open: boolean; onClose: () => void }) {
             <div className="max-h-[50vh] overflow-y-auto p-2">
               {filtered.length === 0 && (
                 <p className="px-3 py-8 text-center text-sm text-muted">
-                  No results for “{query}”.
+                  {ui.palette.noResults} “{query}”.
                 </p>
               )}
               {groups.map(([group, items]) => (
@@ -259,10 +259,10 @@ function Palette({ open, onClose }: { open: boolean; onClose: () => void }) {
               <span className="flex items-center gap-3">
                 <span className="flex items-center gap-1">
                   <ArrowUp className="h-3 w-3" />
-                  <ArrowDown className="h-3 w-3" /> navigate
+                  <ArrowDown className="h-3 w-3" /> {ui.palette.navigateHint}
                 </span>
                 <span className="flex items-center gap-1">
-                  <CornerDownLeft className="h-3 w-3" /> select
+                  <CornerDownLeft className="h-3 w-3" /> {ui.palette.selectHint}
                 </span>
               </span>
             </div>

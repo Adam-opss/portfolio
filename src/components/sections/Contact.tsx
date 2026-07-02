@@ -11,7 +11,7 @@ import {
   Sparkles,
   Download,
 } from "lucide-react";
-import { portfolio } from "@/config/portfolio";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
@@ -19,7 +19,8 @@ import { cn } from "@/lib/utils";
 type Status = "idle" | "sending" | "sent";
 
 export function Contact() {
-  const { person, social } = portfolio;
+  const { content, ui } = useLanguage();
+  const { person, social } = content;
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
@@ -39,10 +40,10 @@ export function Contact() {
     <Section
       id="contact"
       index={7}
-      eyebrow="Get in touch"
-      title="Let's build"
-      titleAccent="something"
-      description="Open to internships, junior roles, and interesting data problems. Drop me a line."
+      eyebrow={ui.contact.eyebrow}
+      title={ui.contact.title}
+      titleAccent={ui.contact.titleAccent}
+      description={ui.contact.description}
     >
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Info panel */}
@@ -82,7 +83,7 @@ export function Contact() {
 
             <div className="mt-6 border-t border-border pt-5">
               <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted">
-                Find me online
+                {ui.contact.findOnline}
               </p>
               <div className="flex flex-wrap gap-2">
                 {social.map((s) => {
@@ -104,20 +105,20 @@ export function Contact() {
               </div>
             </div>
 
-            {portfolio.person.resumeUrl && (
+            {person.resumeUrl && (
               <a
-                href={portfolio.person.resumeUrl}
+                href={person.resumeUrl}
                 download="Adam_Palo_CV.pdf"
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface-2/60 px-4 py-3 text-sm font-medium text-foreground transition hover:border-accent-blue/50 hover:text-accent-blue"
               >
-                <Download className="h-4 w-4" /> Download CV
+                <Download className="h-4 w-4" /> {ui.contact.downloadCv}
               </a>
             )}
           </div>
 
           <div className="flex items-center gap-3 rounded-2xl border border-border bg-surface/40 p-4 text-sm text-muted">
             <Sparkles className="h-5 w-5 shrink-0 text-accent-blue" />
-            Usually replies within 24 hours.
+            {ui.contact.replies}
           </div>
         </div>
 
@@ -128,29 +129,29 @@ export function Contact() {
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <Field
-              label="Name"
+              label={ui.contact.name}
               id="name"
               value={form.name}
               onChange={(v) => setForm({ ...form, name: v })}
-              placeholder="Jane Doe"
+              placeholder={ui.contact.namePlaceholder}
             />
             <Field
-              label="Email"
+              label={ui.contact.email}
               id="email"
               type="email"
               value={form.email}
               onChange={(v) => setForm({ ...form, email: v })}
-              placeholder="jane@company.com"
+              placeholder={ui.contact.emailPlaceholder}
             />
           </div>
           <div className="mt-5">
             <Field
-              label="Message"
+              label={ui.contact.message}
               id="message"
               textarea
               value={form.message}
               onChange={(v) => setForm({ ...form, message: v })}
-              placeholder="Tell me about the role or project…"
+              placeholder={ui.contact.messagePlaceholder}
             />
           </div>
 
@@ -166,17 +167,17 @@ export function Contact() {
           >
             {status === "idle" && (
               <>
-                Send Message <Send className="h-4 w-4" />
+                {ui.contact.send} <Send className="h-4 w-4" />
               </>
             )}
             {status === "sending" && (
               <>
-                Sending <Loader2 className="h-4 w-4 animate-spin" />
+                {ui.contact.sending} <Loader2 className="h-4 w-4 animate-spin" />
               </>
             )}
             {status === "sent" && (
               <>
-                Opening your mail app <CheckCircle2 className="h-4 w-4" />
+                {ui.contact.sent} <CheckCircle2 className="h-4 w-4" />
               </>
             )}
           </button>
