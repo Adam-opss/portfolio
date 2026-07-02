@@ -88,8 +88,8 @@
   }
 
   ::selection {
-    background: rgb(var(--accent-blue) / 0.3);
-    color: rgb(var(--foreground));
+    background: rgb(var(--accent-blue));
+    color: rgb(var(--on-accent));
   }
 
   /* Hide native cursor on desktop where the custom one is active */
