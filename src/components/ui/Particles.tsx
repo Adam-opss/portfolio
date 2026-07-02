@@ -41,6 +41,21 @@ export function Particles({ quantity = 60, className }: ParticlesProps) {
     let raf = 0;
     const mouse = { x: -9999, y: -9999 };
 
+    // Particle colour follows the theme via the --particle CSS variable.
+    let color = "210,210,220";
+    const readColor = () => {
+      const v = getComputedStyle(document.documentElement)
+        .getPropertyValue("--particle")
+        .trim();
+      if (v) color = v.replace(/\s+/g, ",");
+    };
+    readColor();
+    const themeObserver = new MutationObserver(readColor);
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     const resize = () => {
       const { clientWidth: w, clientHeight: h } = canvas.parentElement!;
       canvas.width = w * dpr;
@@ -82,7 +97,7 @@ export function Particles({ quantity = 60, className }: ParticlesProps) {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(210,210,220,${p.alpha})`;
+        ctx.fillStyle = `rgba(${color},${p.alpha})`;
         ctx.fill();
 
         // Connections.
@@ -93,7 +108,7 @@ export function Particles({ quantity = 60, className }: ParticlesProps) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(210,210,220,${0.09 * (1 - d / 120)})`;
+            ctx.strokeStyle = `rgba(${color},${0.09 * (1 - d / 120)})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
@@ -120,6 +135,7 @@ export function Particles({ quantity = 60, className }: ParticlesProps) {
 
     return () => {
       cancelAnimationFrame(raf);
+      themeObserver.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouse);
       window.removeEventListener("mouseout", onLeave);

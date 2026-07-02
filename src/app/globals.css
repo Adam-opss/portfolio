@@ -19,6 +19,27 @@
     --accent-purple: 161 161 170; /* zinc-400 (mid grey) */
     --accent-cyan: 212 212 216; /* zinc-300 (light grey) */
     --on-accent: 10 10 12; /* near-black text on light fills */
+    --glow: 255 255 255; /* soft glow / ambient tint colour */
+    --particle: 210 210 220; /* background particle colour */
+    --vignette: rgba(0, 0, 0, 0.5); /* edge darkening */
+  }
+
+  :root.light {
+    /* Light theme - clean inverse of the monochrome palette */
+    --bg: 250 250 251;
+    --surface: 255 255 255;
+    --surface-2: 243 243 245;
+    --border: 224 224 229;
+    --muted: 90 92 100;
+    --foreground: 20 20 24;
+
+    --accent-blue: 24 24 27; /* near-black (primary) */
+    --accent-purple: 82 82 91; /* zinc-600 */
+    --accent-cyan: 39 39 42; /* zinc-800 */
+    --on-accent: 250 250 250; /* white text on dark fills */
+    --glow: 24 24 27; /* dark ambient tint on light bg */
+    --particle: 120 122 132; /* darker particles for the light bg */
+    --vignette: rgba(15, 15, 20, 0.05); /* barely-there on light bg */
   }
 
   * {
@@ -27,7 +48,6 @@
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
   }
 
   body {

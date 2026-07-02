@@ -21,7 +21,7 @@ export function AnimatedBackground() {
         className="absolute inset-0 opacity-[0.18]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(rgb(var(--foreground) / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--foreground) / 0.05) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage:
             "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
@@ -33,8 +33,14 @@ export function AnimatedBackground() {
       {/* Global moving particle field */}
       <Particles className="absolute inset-0 h-full w-full" quantity={90} />
 
-      {/* Vignette to deepen edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.5))]" />
+      {/* Vignette to deepen edges (theme-aware) */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 55%, var(--vignette))",
+        }}
+      />
     </div>
   );
 }

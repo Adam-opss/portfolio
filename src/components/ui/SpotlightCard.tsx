@@ -6,19 +6,14 @@ import { cn } from "@/lib/utils";
 interface SpotlightCardProps {
   children: ReactNode;
   className?: string;
-  /** Spotlight tint, defaults to accent blue. */
-  glow?: string;
 }
 
 /**
  * Glassmorphic card with a cursor-following radial spotlight and a soft
  * glowing border on hover. Pure CSS variables - no re-render on mouse move.
+ * The spotlight tint follows the theme (light on dark, dark on light).
  */
-export function SpotlightCard({
-  children,
-  className,
-  glow = "255,255,255",
-}: SpotlightCardProps) {
+export function SpotlightCard({ children, className }: SpotlightCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [opacity, setOpacity] = useState(0);
 
@@ -36,7 +31,6 @@ export function SpotlightCard({
       onMouseMove={onMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
-      style={{ "--glow": glow } as React.CSSProperties}
       className={cn(
         "group relative overflow-hidden rounded-2xl border border-border bg-surface/70 backdrop-blur-md transition-colors duration-300 hover:border-accent-blue/40",
         className,
@@ -48,7 +42,7 @@ export function SpotlightCard({
         style={{
           opacity,
           background:
-            "radial-gradient(420px circle at var(--mx) var(--my), rgba(var(--glow),0.12), transparent 60%)",
+            "radial-gradient(420px circle at var(--mx) var(--my), rgb(var(--foreground) / 0.1), transparent 60%)",
         }}
       />
       <div className="relative z-10">{children}</div>

@@ -3,6 +3,7 @@ import { Inter, Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/config/site";
 import { portfolio } from "@/config/portfolio";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { CommandPaletteProvider } from "@/components/providers/CommandPalette";
 import { CursorProvider } from "@/components/providers/CursorProvider";
@@ -108,12 +109,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        {/* Apply the stored theme before paint to avoid a flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');if(t==='light'){var e=document.documentElement;e.classList.remove('dark');e.classList.add('light');e.style.colorScheme='light';}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${sora.variable} ${mono.variable} font-sans antialiased`}
       >
         <StructuredData />
-        <LanguageProvider>
-          <CommandPaletteProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <CommandPaletteProvider>
             <LoadingScreen />
             <AnimatedBackground />
             <GrainOverlay />
@@ -122,8 +132,9 @@ export default function RootLayout({
             <Navbar />
             <main className="relative">{children}</main>
             <BackToTop />
-          </CommandPaletteProvider>
-        </LanguageProvider>
+            </CommandPaletteProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

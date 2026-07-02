@@ -29,7 +29,7 @@ export function Education() {
             transition={{ delay: i * 0.1, duration: 0.55 }}
             className="h-full"
           >
-            <SpotlightCard className="h-full p-6" glow="255,255,255">
+            <SpotlightCard className="h-full p-6">
               <div className="mb-4 flex items-center justify-between">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-surface-2/60 text-accent-cyan">
                   <GraduationCap className="h-6 w-6" />

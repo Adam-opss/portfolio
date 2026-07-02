@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Command, Languages } from "lucide-react";
+import { Menu, X, Command, Languages, Sun, Moon } from "lucide-react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { useCommandPalette } from "@/components/providers/CommandPalette";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { uiStrings } from "@/config/i18n";
 import { useLockBody } from "@/hooks/useLockBody";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,7 @@ export function Navbar() {
   const active = useScrollSpy(navIds);
   const { toggle: togglePalette } = useCommandPalette();
   const { content, ui, lang, toggle: toggleLang } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   useLockBody(menuOpen);
 
   useEffect(() => {
@@ -103,6 +105,19 @@ export function Navbar() {
             <Command className="h-3.5 w-3.5" />
             <span>{ui.common.search}</span>
             <kbd className="rounded border border-border px-1 text-[10px]">⌘K</kbd>
+          </button>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/60 text-muted transition hover:text-foreground"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
           </button>
 
           {/* Language toggle */}

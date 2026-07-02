@@ -29,9 +29,9 @@ const config: Config = {
         "4xl": "2rem",
       },
       boxShadow: {
-        soft: "0 8px 30px rgba(0,0,0,0.35)",
-        glow: "0 0 40px -10px rgba(255,255,255,0.16)",
-        "glow-purple": "0 0 50px -12px rgba(255,255,255,0.14)",
+        soft: "0 8px 30px rgba(0,0,0,0.18)",
+        glow: "0 0 40px -10px rgb(var(--glow) / 0.18)",
+        "glow-purple": "0 0 50px -12px rgb(var(--glow) / 0.16)",
       },
       backgroundImage: {
         "grid-fade":
