@@ -51,7 +51,7 @@ export function Hero() {
         <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
           <AnimatedHeadline
             segments={[
-              { text: "Hi, I'm " },
+              { text: ui.hero.greeting },
               { text: person.firstName, accent: true },
             ]}
             delay={0.15}

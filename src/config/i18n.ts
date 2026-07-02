@@ -16,6 +16,7 @@ export interface UIStrings {
     language: string;
   };
   hero: {
+    greeting: string;
     lead: string;
     viewProjects: string;
     getInTouch: string;
@@ -131,6 +132,7 @@ const en: UIStrings = {
   ],
   common: { search: "Search", language: "Language" },
   hero: {
+    greeting: "Hi, I'm ",
     lead: "I work across machine learning, business intelligence, and data visualization, making messy datasets clear, and clear data actionable.",
     viewProjects: "View Projects",
     getInTouch: "Get in touch",
@@ -252,6 +254,7 @@ const sk: UIStrings = {
   ],
   common: { search: "Hľadať", language: "Jazyk" },
   hero: {
+    greeting: "Ahoj, som ",
     lead: "Venujem sa strojovému učeniu, business intelligence a vizualizácii dát – neprehľadné dáta mením na jasné a jasné dáta na použiteľné.",
     viewProjects: "Pozrieť projekty",
     getInTouch: "Kontaktuj ma",
