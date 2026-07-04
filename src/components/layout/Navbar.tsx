@@ -9,7 +9,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { uiStrings } from "@/config/i18n";
 import { useLockBody } from "@/hooks/useLockBody";
-import { cn } from "@/lib/utils";
+import { cn, goToSection } from "@/lib/utils";
 
 // Section ids are language-independent, so a stable list is fine for scroll-spy.
 const navIds = uiStrings.en.nav.map((n) => n.id);
@@ -36,7 +36,7 @@ export function Navbar() {
     .join("");
 
   const go = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    goToSection(id);
     setMenuOpen(false);
   };
 
@@ -57,7 +57,13 @@ export function Navbar() {
       >
         {/* Logo */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => {
+            if (window.location.pathname !== "/") {
+              window.location.href = "/";
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className="group flex items-center gap-2"
           aria-label="Back to top"
         >

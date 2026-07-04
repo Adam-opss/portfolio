@@ -21,7 +21,7 @@ import {
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useLockBody } from "@/hooks/useLockBody";
 import { getIcon } from "@/lib/icons";
-import { cn } from "@/lib/utils";
+import { cn, goToSection } from "@/lib/utils";
 
 interface Command {
   id: string;
@@ -47,7 +47,7 @@ export function useCommandPalette(): PaletteContextValue {
 }
 
 function scrollToId(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  goToSection(id);
 }
 
 export function CommandPaletteProvider({ children }: { children: ReactNode }) {

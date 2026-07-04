@@ -1,8 +1,16 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, ExternalLink, ArrowUpRight, X, Search } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  ArrowUpRight,
+  X,
+  Search,
+  BookOpen,
+} from "lucide-react";
 import { type Project } from "@/config/portfolio";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
@@ -197,6 +205,14 @@ function ProjectCard({
               <ExternalLink className="h-3.5 w-3.5" /> {ui.projects.demo}
             </a>
           )}
+          {project.caseStudy && (
+            <Link
+              href={project.caseStudy}
+              className="flex items-center gap-1.5 rounded-lg border border-accent-blue/40 bg-accent-blue/10 px-3 py-1.5 text-xs font-medium text-foreground transition hover:border-accent-blue/70"
+            >
+              <BookOpen className="h-3.5 w-3.5" /> {ui.projects.caseStudy}
+            </Link>
+          )}
           <button
             onClick={onOpen}
             className="ml-auto text-xs font-medium text-accent-blue hover:underline"
@@ -327,6 +343,14 @@ function ProjectModal({
                   >
                     <ExternalLink className="h-4 w-4" /> {ui.projects.liveDemo}
                   </a>
+                )}
+                {project.caseStudy && (
+                  <Link
+                    href={project.caseStudy}
+                    className="flex items-center gap-2 rounded-full bg-accent-blue px-4 py-2 text-sm font-medium text-on-accent shadow-glow hover:opacity-90"
+                  >
+                    <BookOpen className="h-4 w-4" /> {ui.projects.caseStudy}
+                  </Link>
                 )}
               </div>
             </div>

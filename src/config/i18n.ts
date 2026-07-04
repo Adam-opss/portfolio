@@ -54,6 +54,7 @@ export interface UIStrings {
     techStack: string;
     viewCode: string;
     liveDemo: string;
+    caseStudy: string;
     noResults: string;
   };
   experience: {
@@ -174,6 +175,7 @@ const en: UIStrings = {
     techStack: "Tech stack",
     viewCode: "View Code",
     liveDemo: "Live Demo",
+    caseStudy: "Case study",
     noResults: "No projects match your filters.",
   },
   experience: {
@@ -296,6 +298,7 @@ const sk: UIStrings = {
     techStack: "Technológie",
     viewCode: "Zobraziť kód",
     liveDemo: "Živé demo",
+    caseStudy: "Prípadová štúdia",
     noResults: "Žiadne projekty nezodpovedajú filtrom.",
   },
   experience: {

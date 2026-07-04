@@ -37,14 +37,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (stored === "en" || stored === "sk") setLangState(stored);
   }, []);
 
+  // Reflect the language on <html>; persistence happens on user action only,
+  // so the initial render can never overwrite a stored preference.
   useEffect(() => {
     document.documentElement.lang = lang;
-    window.localStorage.setItem(STORAGE_KEY, lang);
   }, [lang]);
 
-  const setLang = useCallback((l: Locale) => setLangState(l), []);
+  const setLang = useCallback((l: Locale) => {
+    setLangState(l);
+    window.localStorage.setItem(STORAGE_KEY, l);
+  }, []);
   const toggle = useCallback(
-    () => setLangState((p) => (p === "en" ? "sk" : "en")),
+    () =>
+      setLangState((p) => {
+        const next = p === "en" ? "sk" : "en";
+        window.localStorage.setItem(STORAGE_KEY, next);
+        return next;
+      }),
     [],
   );
 

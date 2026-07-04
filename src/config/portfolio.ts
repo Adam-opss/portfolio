@@ -44,6 +44,8 @@ export interface Project {
   tags: string[];
   github?: string;
   demo?: string;
+  /** Internal route to a full case-study page (e.g. "/thesis"). */
+  caseStudy?: string;
   featured?: boolean;
   metrics?: { label: string; value: string }[];
 }
@@ -283,11 +285,12 @@ export const portfolio: PortfolioConfig = {
       tags: ["Machine Learning", "Data Analytics"],
       github: "https://github.com/Adam-opss",
       demo: "",
+      caseStudy: "/thesis",
       featured: true,
       metrics: [
-        { label: "Tenders analyzed", value: "12k+" },
-        { label: "Anomaly recall", value: "0.91" },
-        { label: "Bidder pairs ranked", value: "3.4k" },
+        { label: "Records analyzed", value: "160k+" },
+        { label: "Bidder pairs evaluated", value: "12,840" },
+        { label: "Priority pairs flagged", value: "194" },
       ],
     },
     {

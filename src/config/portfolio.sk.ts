@@ -45,9 +45,9 @@ const tagMap: Record<string, string> = {
 };
 
 const metricMap: Record<string, string> = {
-  "Tenders analyzed": "Analyzované tendre",
-  "Anomaly recall": "Recall anomálií",
-  "Bidder pairs ranked": "Zoradené dvojice",
+  "Records analyzed": "Analyzované záznamy",
+  "Bidder pairs evaluated": "Hodnotené dvojice",
+  "Priority pairs flagged": "Prioritné dvojice",
   Tools: "Nástroje",
   Modules: "Moduly",
   Database: "Databáza",

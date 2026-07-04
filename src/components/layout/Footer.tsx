@@ -6,6 +6,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { getIcon } from "@/lib/icons";
 import { GradientText } from "@/components/ui/GradientText";
 import { Reveal } from "@/components/ui/Reveal";
+import { goToSection } from "@/lib/utils";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -68,11 +69,7 @@ export function Footer() {
               {ui.nav.map((n) => (
                 <li key={n.id}>
                   <button
-                    onClick={() =>
-                      document
-                        .getElementById(n.id)
-                        ?.scrollIntoView({ behavior: "smooth" })
-                    }
+                    onClick={() => goToSection(n.id)}
                     className="text-muted transition hover:text-foreground"
                   >
                     {n.label}
