@@ -119,9 +119,9 @@ const copy = {
       "Three charts straight from the pipeline output, each carrying one finding:",
     anomalies: [
       {
-        img: "/thesis/winrate-distribution.png",
-        title: "The 70% threshold isolates a rare tail",
-        desc: "Winner win rates peak between 25% and 40% for every group size, and only about 3% of pairs clear the 70% screening threshold. The screen flags a small extreme tail, not ordinary market leaders.",
+        img: "/thesis/feature-correlation.png",
+        title: "The four signals stay independent",
+        desc: "The four collusion signals barely overlap: the strongest link is a mild -0.49 between saving variability and the number of applicants. Because each feature carries its own information, a pair has to look unusual on several axes at once to surface, which keeps false alarms down.",
       },
       {
         img: "/thesis/dbscan-clusters.png",
@@ -129,9 +129,9 @@ const copy = {
         desc: "DBSCAN over the PCA projection finds a single dominant cluster of 561 'ordinary' pairs, six micro-clusters of 3 to 9 pairs, and 166 noise pairs. Collusion candidates do not form a tidy group of their own; they fall outside every common pattern.",
       },
       {
-        img: "/thesis/if-vs-dbscan.png",
-        title: "Two independent methods, one story",
-        desc: "The same landscape scored by Isolation Forest (left) and clustered by DBSCAN (right): the high-anomaly red points trace the same rim that DBSCAN labels as noise. When two unrelated methods point at the same pairs, that agreement is what the priority list is built on.",
+        img: "/thesis/if-score-by-cluster.png",
+        title: "The odd clusters are the high-scoring ones",
+        desc: "Scoring every pair with Isolation Forest and grouping the scores by DBSCAN cluster: the 561-pair normal cluster (Z0) sits well below the 85th-percentile line, while the tiny edge clusters (Z1, Z4, Z5) land on or above it. Two methods built on different principles flag the same handful of pairs.",
       },
     ],
     resultsEyebrow: "06 · Models & results",
@@ -255,9 +255,9 @@ const copy = {
       "Tri grafy priamo z výstupov pipeline, každý nesie jedno zistenie:",
     anomalies: [
       {
-        img: "/thesis/winrate-distribution.png",
-        title: "Prah 70 % izoluje vzácny chvost",
-        desc: "Miera výhier víťaza vrcholí medzi 25 % a 40 % pri každej veľkosti skupiny a prah 70 % prekročia len asi 3 % dvojíc. Skríning teda označuje malý extrémny chvost, nie bežných lídrov trhu.",
+        img: "/thesis/feature-correlation.png",
+        title: "Štyri signály zostávajú nezávislé",
+        desc: "Štyri príznaky kolúzie sa takmer neprekrývajú. Najsilnejšia väzba je len mierne -0,49 medzi variabilitou úspor a počtom uchádzačov. Keďže každý príznak nesie vlastnú informáciu, dvojica musí pôsobiť nezvyčajne na viacerých osiach naraz, čo drží počet falošných poplachov nízko.",
       },
       {
         img: "/thesis/dbscan-clusters.png",
@@ -265,9 +265,9 @@ const copy = {
         desc: "DBSCAN nad PCA projekciou nachádza jeden dominantný zhluk 561 'bežných' dvojíc, šesť mikro-zhlukov s 3 až 9 dvojicami a 166 dvojíc ako šum. Kandidáti na kolúziu netvoria vlastnú úhľadnú skupinu; vypadávajú zo všetkých bežných vzorcov.",
       },
       {
-        img: "/thesis/if-vs-dbscan.png",
-        title: "Dve nezávislé metódy, jeden príbeh",
-        desc: "Rovnaká krajina skórovaná Isolation Forestom (vľavo) a zhlukovaná DBSCAN-om (vpravo): červené body s vysokou anomáliou kopírujú ten istý okraj, ktorý DBSCAN označuje ako šum. Práve zhoda dvoch nesúvisiacich metód je základ prioritného zoznamu.",
+        img: "/thesis/if-score-by-cluster.png",
+        title: "Neobvyklé zhluky majú aj vysoké skóre",
+        desc: "Každú dvojicu ohodnotí Isolation Forest a skóre sa zoskupia podľa DBSCAN zhluku: normálny zhluk s 561 dvojicami (Z0) leží hlboko pod hranicou 85. percentilu, kým drobné okrajové zhluky (Z1, Z4, Z5) sedia na nej alebo nad ňou. Dve metódy postavené na odlišných princípoch označia tú istú hŕstku dvojíc.",
       },
     ],
     resultsEyebrow: "06 · Modely a výsledky",
