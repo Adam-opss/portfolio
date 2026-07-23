@@ -305,6 +305,7 @@ export const portfolio: PortfolioConfig = {
       tags: ["Data Visualization", "Business Intelligence", "Data Analytics"],
       github: "https://github.com/Adam-opss/logistics-analytics-dashboard",
       demo: "",
+      caseStudy: "/logistics",
       featured: true,
       metrics: [
         { label: "Hackathon", value: "1st place" },
