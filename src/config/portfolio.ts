@@ -303,7 +303,7 @@ export const portfolio: PortfolioConfig = {
       visual: "dashboard",
       tech: ["Tableau", "Streamlit", "Python", "Pandas", "ETL"],
       tags: ["Data Visualization", "Business Intelligence", "Data Analytics"],
-      github: "",
+      github: "https://github.com/Adam-opss/logistics-analytics-dashboard",
       demo: "",
       featured: true,
       metrics: [
@@ -323,7 +323,7 @@ export const portfolio: PortfolioConfig = {
       tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Recharts"],
       tags: ["Full-Stack", "Web App", "Data Visualization"],
       github: "",
-      demo: "",
+      demo: "https://money-flow-ruddy.vercel.app",
       featured: true,
       metrics: [
         { label: "Modules", value: "6" },
@@ -341,7 +341,7 @@ export const portfolio: PortfolioConfig = {
       visual: "pipeline",
       tech: ["Docker", "Docker Compose", "Node.js", "Express", "PostgreSQL"],
       tags: ["Cloud", "DevOps", "Web App"],
-      github: "",
+      github: "https://github.com/Adam-opss/track-my-goals",
       demo: "",
       featured: false,
       metrics: [
@@ -360,7 +360,7 @@ export const portfolio: PortfolioConfig = {
       visual: "cluster",
       tech: ["Java", "OOP", "Design Patterns", "UML"],
       tags: ["Software Design"],
-      github: "",
+      github: "https://github.com/Adam-opss/festival-ticketing",
       demo: "",
       featured: false,
       metrics: [
