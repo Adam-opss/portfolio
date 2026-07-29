@@ -125,10 +125,22 @@ function ProjectCard({
         className="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl text-left"
         aria-label={`Open ${project.title}`}
       >
-        <div className="absolute inset-0 bg-accent-blue opacity-[0.05] transition-opacity duration-500 group-hover:opacity-[0.1]" />
-        <div className="absolute inset-0 p-5 opacity-80 transition-all duration-500 group-hover:scale-[1.03] group-hover:opacity-100">
-          <ProjectVisual variant={project.visual} />
-        </div>
+        {project.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-center grayscale transition-all duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-accent-blue opacity-[0.05] transition-opacity duration-500 group-hover:opacity-[0.1]" />
+            <div className="absolute inset-0 p-5 opacity-80 transition-all duration-500 group-hover:scale-[1.03] group-hover:opacity-100">
+              <ProjectVisual variant={project.visual} />
+            </div>
+          </>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
         {project.featured && (
           <span className="absolute left-3 top-3 rounded-full border border-accent-blue/40 bg-bg/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-accent-blue backdrop-blur">
@@ -259,10 +271,21 @@ function ProjectModal({
             className="relative z-10 max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-border bg-surface/95 shadow-soft backdrop-blur-xl"
           >
             <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-t-3xl">
-              <div className="absolute inset-0 bg-accent-blue opacity-[0.05]" />
-              <div className="absolute inset-0 p-6">
-                <ProjectVisual variant={project.visual} />
-              </div>
+              {project.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                />
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-accent-blue opacity-[0.05]" />
+                  <div className="absolute inset-0 p-6">
+                    <ProjectVisual variant={project.visual} />
+                  </div>
+                </>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
               <button
                 onClick={onClose}

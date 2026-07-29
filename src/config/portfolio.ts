@@ -359,6 +359,7 @@ export const portfolio: PortfolioConfig = {
       longDescription:
         "An object-oriented programming assignment modeling a music-festival ticket-selling system in Java. The design applies several classic Gang-of-Four patterns: Factory for creating standard, family, and VIP tickets; Decorator for layering VIP perks onto a ticket; and Adapter for integrating a legacy ticket system. It includes a domain model (bands, performances, festival program), custom exceptions for invalid states, and a UML class diagram designed up front.",
       visual: "cluster",
+      image: "/projects/festival-uml.png",
       tech: ["Java", "OOP", "Design Patterns", "UML"],
       tags: ["Software Design"],
       github: "https://github.com/Adam-opss/festival-ticketing",
@@ -378,6 +379,7 @@ export const portfolio: PortfolioConfig = {
       longDescription:
         "A mobile game built in Java for the 'Mobile Intelligent Solutions Development' course. You draw a bridge by hand, then a rider attempts to drive over the sketched shape to the finish flag. Later levels add moving obstacles you must avoid and wind zones that lift or push the rider off course. Most of the work lived in the details: getting the full game flow right (menu → levels → play → win/lose → retry), making resets truly reset state, tuning collisions and physics for a consistent, non-random feel, and adding level progression. Firebase handles user accounts, progress saving, and a simple leaderboard.",
       visual: "area",
+      image: "/projects/draw-and-ride.png",
       tech: ["Android", "Java", "Firebase", "Game Physics"],
       tags: ["Mobile", "Game Dev"],
       github: "",
