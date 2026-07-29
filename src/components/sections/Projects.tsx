@@ -117,7 +117,7 @@ function ProjectCard({
 }) {
   const { ui } = useLanguage();
   return (
-    <SpotlightCard className="flex h-full flex-col">
+    <SpotlightCard tilt className="flex h-full flex-col">
       {/* Cover */}
       <button
         onClick={onOpen}

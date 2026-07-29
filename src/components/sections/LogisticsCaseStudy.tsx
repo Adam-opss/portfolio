@@ -344,9 +344,9 @@ export function LogisticsCaseStudy() {
       <Reveal direction="none">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-2 text-sm text-muted backdrop-blur transition hover:border-accent-blue/50 hover:text-foreground"
+          className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-2 text-sm text-muted backdrop-blur transition hover:border-accent-blue/50 hover:text-foreground"
         >
-          <ArrowLeft className="h-4 w-4" /> {t.back}
+          <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" /> {t.back}
         </Link>
       </Reveal>
 
@@ -595,9 +595,9 @@ export function LogisticsCaseStudy() {
             </a>
             <a
               href={`mailto:${email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-6 py-3 text-sm font-medium text-foreground transition hover:border-accent-blue/50"
+              className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-6 py-3 text-sm font-medium text-foreground transition hover:border-accent-blue/50"
             >
-              {t.ctaContact} <ArrowUpRight className="h-4 w-4" />
+              {t.ctaContact} <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>

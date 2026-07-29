@@ -35,7 +35,7 @@ export function Footer() {
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted">
             <a
               href={`mailto:${person.email}`}
-              className="transition hover:text-foreground"
+              className="link-underline transition-colors hover:text-foreground"
             >
               {person.email}
             </a>
@@ -70,7 +70,7 @@ export function Footer() {
                 <li key={n.id}>
                   <button
                     onClick={() => goToSection(n.id)}
-                    className="text-muted transition hover:text-foreground"
+                    className="link-underline text-muted transition-colors hover:text-foreground"
                   >
                     {n.label}
                   </button>
