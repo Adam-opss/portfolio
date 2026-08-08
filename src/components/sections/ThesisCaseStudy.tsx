@@ -18,6 +18,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Reveal } from "@/components/ui/Reveal";
 import { GradientText } from "@/components/ui/GradientText";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { ThesisClusters3D } from "@/components/ui/ThesisClusters3D";
 import { cn } from "@/lib/utils";
 
 /* ────────────────────────────────────────────────────────────────────────── */
@@ -116,7 +117,7 @@ const copy = {
     anomalyEyebrow: "05 · Findings",
     anomalyTitle: "What the data shows",
     anomalyBody:
-      "Three charts straight from the pipeline output, each carrying one finding:",
+      "Three views from the pipeline output, one of them interactive, each carrying a finding:",
     anomalies: [
       {
         img: "/thesis/feature-correlation.png",
@@ -124,16 +125,14 @@ const copy = {
         desc: "The four collusion signals barely overlap: the strongest link is a mild -0.49 between saving variability and the number of applicants. Because each feature carries its own information, a pair has to look unusual on several axes at once to surface, which keeps false alarms down.",
       },
       {
-        img: "/thesis/dbscan-clusters.png",
-        title: "One normal pattern, suspicion on the edges",
-        desc: "DBSCAN over the PCA projection finds a single dominant cluster of 561 'ordinary' pairs, six micro-clusters of 3 to 9 pairs, and 166 noise pairs. Collusion candidates do not form a tidy group of their own; they fall outside every common pattern.",
-      },
-      {
         img: "/thesis/if-score-by-cluster.png",
         title: "The odd clusters are the high-scoring ones",
         desc: "Scoring every pair with Isolation Forest and grouping the scores by DBSCAN cluster: the 561-pair normal cluster (Z0) sits well below the 85th-percentile line, while the tiny edge clusters (Z1, Z4, Z5) land on or above it. Two methods built on different principles flag the same handful of pairs.",
       },
     ],
+    clusters3dTitle: "One normal pattern, suspicion on the edges",
+    clusters3dDesc:
+      "Drag to explore the DBSCAN result in 3D. PCA compresses the four behavioural signals into three axes that keep 88% of the variance: one dense cluster of 561 ordinary pairs, 166 scattered noise pairs, and six tiny coloured micro-clusters on the rim. The suspicious pairs never form a group of their own, they sit outside every common pattern.",
     resultsEyebrow: "06 · Models & results",
     resultsTitle: "Two independent detectors, one priority list",
     dbscan: {
@@ -252,7 +251,7 @@ const copy = {
     anomalyEyebrow: "05 · Zistenia",
     anomalyTitle: "Čo dáta ukázali",
     anomalyBody:
-      "Tri grafy priamo z výstupov pipeline, každý nesie jedno zistenie:",
+      "Tri pohľady z výstupov pipeline, jeden interaktívny, každý nesie zistenie:",
     anomalies: [
       {
         img: "/thesis/feature-correlation.png",
@@ -260,16 +259,14 @@ const copy = {
         desc: "Štyri príznaky kolúzie sa takmer neprekrývajú. Najsilnejšia väzba je len mierne -0,49 medzi variabilitou úspor a počtom uchádzačov. Keďže každý príznak nesie vlastnú informáciu, dvojica musí pôsobiť nezvyčajne na viacerých osiach naraz, čo drží počet falošných poplachov nízko.",
       },
       {
-        img: "/thesis/dbscan-clusters.png",
-        title: "Jeden normál, podozrenie na okrajoch",
-        desc: "DBSCAN nad PCA projekciou nachádza jeden dominantný zhluk 561 'bežných' dvojíc, šesť mikro-zhlukov s 3 až 9 dvojicami a 166 dvojíc ako šum. Kandidáti na kolúziu netvoria vlastnú úhľadnú skupinu; vypadávajú zo všetkých bežných vzorcov.",
-      },
-      {
         img: "/thesis/if-score-by-cluster.png",
         title: "Neobvyklé zhluky majú aj vysoké skóre",
         desc: "Každú dvojicu ohodnotí Isolation Forest a skóre sa zoskupia podľa DBSCAN zhluku: normálny zhluk s 561 dvojicami (Z0) leží hlboko pod hranicou 85. percentilu, kým drobné okrajové zhluky (Z1, Z4, Z5) sedia na nej alebo nad ňou. Dve metódy postavené na odlišných princípoch označia tú istú hŕstku dvojíc.",
       },
     ],
+    clusters3dTitle: "Jeden normál, podozrenie na okrajoch",
+    clusters3dDesc:
+      "Ťahaj a preskúmaj výsledok DBSCAN v 3D. PCA stlačí štyri behaviorálne signály do troch osí, ktoré udržia 88% rozptylu: jeden hustý zhluk 561 bežných dvojíc, 166 rozptýlených dvojíc ako šum a šesť drobných farebných mikro-zhlukov na okraji. Podozrivé dvojice nikdy netvoria vlastnú skupinu, ležia mimo všetkých bežných vzorcov.",
     resultsEyebrow: "06 · Modely a výsledky",
     resultsTitle: "Dva nezávislé detektory, jeden prioritný zoznam",
     dbscan: {
@@ -328,6 +325,27 @@ function SectionHeading({
         </h2>
       </Reveal>
     </div>
+  );
+}
+
+function Caption({
+  num,
+  title,
+  desc,
+}: {
+  num: string;
+  title: string;
+  desc: string;
+}) {
+  return (
+    <figcaption className="mt-3 flex gap-3 px-1">
+      <span className="font-mono text-xs font-semibold text-accent-blue">
+        {num}
+      </span>
+      <span className="text-sm text-muted">
+        <span className="font-medium text-foreground">{title}.</span> {desc}
+      </span>
+    </figcaption>
   );
 }
 
@@ -491,32 +509,57 @@ export function ThesisCaseStudy() {
           </p>
         </Reveal>
         <div className="space-y-10">
-          {t.anomalies.map((a, i) => (
-            <Reveal key={a.title} delay={i * 0.05}>
-              <figure>
-                <div className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-soft">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={a.img}
-                    alt={a.title}
-                    loading="lazy"
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                <figcaption className="mt-3 flex gap-3 px-1">
-                  <span className="font-mono text-xs font-semibold text-accent-blue">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-sm text-muted">
-                    <span className="font-medium text-foreground">
-                      {a.title}.
-                    </span>{" "}
-                    {a.desc}
-                  </span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+          {/* 01 - static: feature correlation */}
+          <Reveal>
+            <figure>
+              <div className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-soft">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.anomalies[0].img}
+                  alt={t.anomalies[0].title}
+                  loading="lazy"
+                  className="w-full rounded-lg"
+                />
+              </div>
+              <Caption
+                num="01"
+                title={t.anomalies[0].title}
+                desc={t.anomalies[0].desc}
+              />
+            </figure>
+          </Reveal>
+
+          {/* 02 - interactive 3D cluster plot */}
+          <Reveal delay={0.05}>
+            <figure>
+              <ThesisClusters3D />
+              <Caption
+                num="02"
+                title={t.clusters3dTitle}
+                desc={t.clusters3dDesc}
+              />
+            </figure>
+          </Reveal>
+
+          {/* 03 - static: IF score by cluster */}
+          <Reveal delay={0.05}>
+            <figure>
+              <div className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-soft">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.anomalies[1].img}
+                  alt={t.anomalies[1].title}
+                  loading="lazy"
+                  className="w-full rounded-lg"
+                />
+              </div>
+              <Caption
+                num="03"
+                title={t.anomalies[1].title}
+                desc={t.anomalies[1].desc}
+              />
+            </figure>
+          </Reveal>
         </div>
       </section>
 
