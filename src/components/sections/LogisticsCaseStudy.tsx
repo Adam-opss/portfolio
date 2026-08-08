@@ -18,7 +18,12 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Reveal } from "@/components/ui/Reveal";
 import { GradientText } from "@/components/ui/GradientText";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { RegressionScatter } from "@/components/charts/RegressionScatter";
+import { MonthlyBars } from "@/components/charts/MonthlyBars";
+import { RouteScatter } from "@/components/charts/RouteScatter";
 import { cn } from "@/lib/utils";
+
+const FINDING_CHARTS = [RegressionScatter, MonthlyBars, RouteScatter];
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  Bilingual copy (real numbers from the Transport Data 2025 analysis)        */
@@ -490,32 +495,27 @@ export function LogisticsCaseStudy() {
           </p>
         </Reveal>
         <div className="space-y-10">
-          {t.anomalies.map((a, i) => (
-            <Reveal key={a.title} delay={i * 0.05}>
-              <figure>
-                <div className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-soft">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={a.img}
-                    alt={a.title}
-                    loading="lazy"
-                    className="w-full rounded-lg"
-                  />
-                </div>
-                <figcaption className="mt-3 flex gap-3 px-1">
-                  <span className="font-mono text-xs font-semibold text-accent-blue">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-sm text-muted">
-                    <span className="font-medium text-foreground">
-                      {a.title}.
-                    </span>{" "}
-                    {a.desc}
-                  </span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+          {t.anomalies.map((a, i) => {
+            const Chart = FINDING_CHARTS[i];
+            return (
+              <Reveal key={a.title} delay={i * 0.05}>
+                <figure>
+                  <Chart />
+                  <figcaption className="mt-3 flex gap-3 px-1">
+                    <span className="font-mono text-xs font-semibold text-accent-blue">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-sm text-muted">
+                      <span className="font-medium text-foreground">
+                        {a.title}.
+                      </span>{" "}
+                      {a.desc}
+                    </span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

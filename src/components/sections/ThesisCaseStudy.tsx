@@ -19,6 +19,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { GradientText } from "@/components/ui/GradientText";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { ThesisClusters3D } from "@/components/ui/ThesisClusters3D";
+import { CorrelationHeatmap } from "@/components/charts/CorrelationHeatmap";
+import { AnomalyBoxPlot } from "@/components/charts/AnomalyBoxPlot";
 import { cn } from "@/lib/utils";
 
 /* ────────────────────────────────────────────────────────────────────────── */
@@ -509,18 +511,10 @@ export function ThesisCaseStudy() {
           </p>
         </Reveal>
         <div className="space-y-10">
-          {/* 01 - static: feature correlation */}
+          {/* 01 - interactive: feature correlation */}
           <Reveal>
             <figure>
-              <div className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={t.anomalies[0].img}
-                  alt={t.anomalies[0].title}
-                  loading="lazy"
-                  className="w-full rounded-lg"
-                />
-              </div>
+              <CorrelationHeatmap />
               <Caption
                 num="01"
                 title={t.anomalies[0].title}
@@ -541,18 +535,10 @@ export function ThesisCaseStudy() {
             </figure>
           </Reveal>
 
-          {/* 03 - static: IF score by cluster */}
+          {/* 03 - interactive: IF score by cluster */}
           <Reveal delay={0.05}>
             <figure>
-              <div className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-soft">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={t.anomalies[1].img}
-                  alt={t.anomalies[1].title}
-                  loading="lazy"
-                  className="w-full rounded-lg"
-                />
-              </div>
+              <AnomalyBoxPlot />
               <Caption
                 num="03"
                 title={t.anomalies[1].title}
