@@ -1,4 +1,4 @@
-import { Particles } from "./Particles";
+import { Particles3D } from "./Particles3D";
 
 /**
  * Ambient page background: layered gradient blobs, a faint grid, and a global
@@ -30,8 +30,8 @@ export function AnimatedBackground() {
         }}
       />
 
-      {/* Global moving particle field */}
-      <Particles className="absolute inset-0 h-full w-full" quantity={90} />
+      {/* Global interactive 3D particle field */}
+      <Particles3D className="absolute inset-0 h-full w-full" quantity={700} />
 
       {/* Vignette to deepen edges (theme-aware) */}
       <div
