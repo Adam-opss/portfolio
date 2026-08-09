@@ -13,6 +13,8 @@ import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackToTop } from "@/components/layout/BackToTop";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -135,6 +137,8 @@ export default function RootLayout({
             </CommandPaletteProvider>
           </LanguageProvider>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
