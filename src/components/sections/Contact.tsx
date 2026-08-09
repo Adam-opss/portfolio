@@ -10,13 +10,18 @@ import {
   Loader2,
   Sparkles,
   Download,
+  AlertCircle,
 } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
+
+// Formspree form id (the part after formspree.io/f/). Public, safe to commit.
+// Leave empty to fall back to opening the visitor's mail client.
+const FORMSPREE_ID = "mljrgygl";
 
 export function Contact() {
   const { content, ui } = useLanguage();
@@ -24,16 +29,43 @@ export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // No backend wired up: open the user's mail client as a graceful fallback.
-    const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\n- ${form.name} (${form.email})`);
-    setTimeout(() => {
+
+    // No form backend configured: open the mail client as a graceful fallback.
+    if (!FORMSPREE_ID) {
+      const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
+      const body = encodeURIComponent(
+        `${form.message}\n\n- ${form.name} (${form.email})`,
+      );
       window.location.href = `mailto:${person.email}?subject=${subject}&body=${body}`;
       setStatus("sent");
-    }, 900);
+      return;
+    }
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+      if (res.ok) {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -157,7 +189,7 @@ export function Contact() {
 
           <button
             type="submit"
-            disabled={status !== "idle"}
+            disabled={status === "sending" || status === "sent"}
             className={cn(
               "mt-6 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-on-accent transition-all duration-300 disabled:opacity-80",
               status === "sent"
@@ -165,7 +197,7 @@ export function Contact() {
                 : "bg-accent-blue shadow-glow hover:opacity-90",
             )}
           >
-            {status === "idle" && (
+            {(status === "idle" || status === "error") && (
               <>
                 {ui.contact.send} <Send className="h-4 w-4" />
               </>
@@ -181,6 +213,12 @@ export function Contact() {
               </>
             )}
           </button>
+
+          {status === "error" && (
+            <p className="mt-3 flex items-center justify-center gap-2 text-sm text-red-400">
+              <AlertCircle className="h-4 w-4" /> {ui.contact.error}
+            </p>
+          )}
         </form>
       </div>
     </Section>

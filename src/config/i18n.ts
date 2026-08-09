@@ -94,6 +94,7 @@ export interface UIStrings {
     send: string;
     sending: string;
     sent: string;
+    error: string;
   };
   footer: {
     connect: string;
@@ -216,7 +217,8 @@ const en: UIStrings = {
     messagePlaceholder: "Tell me about the role or project…",
     send: "Send Message",
     sending: "Sending",
-    sent: "Opening your mail app",
+    sent: "Message sent",
+    error: "Something went wrong, try again",
   },
   footer: {
     connect: "Let's connect",
@@ -339,7 +341,8 @@ const sk: UIStrings = {
     messagePlaceholder: "Napíš mi o pozícii alebo projekte…",
     send: "Odoslať správu",
     sending: "Odosielam",
-    sent: "Otváram e-mailovú aplikáciu",
+    sent: "Správa odoslaná",
+    error: "Niečo sa pokazilo, skús znova",
   },
   footer: {
     connect: "Spojme sa",
