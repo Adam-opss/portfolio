@@ -121,14 +121,10 @@ const copy = {
     anomalyBody:
       "Three views from the pipeline output, one of them interactive, each carrying a finding:",
     anomalies: [
-      {
-        img: "/thesis/feature-correlation.png",
-        title: "The four signals stay independent",
+      {        title: "The four signals stay independent",
         desc: "The four collusion signals barely overlap: the strongest link is a mild -0.49 between saving variability and the number of applicants. Because each feature carries its own information, a pair has to look unusual on several axes at once to surface, which keeps false alarms down.",
       },
-      {
-        img: "/thesis/if-score-by-cluster.png",
-        title: "The odd clusters are the high-scoring ones",
+      {        title: "The odd clusters are the high-scoring ones",
         desc: "Scoring every pair with Isolation Forest and grouping the scores by DBSCAN cluster: the 561-pair normal cluster (Z0) sits well below the 85th-percentile line, while the tiny edge clusters (Z1, Z4, Z5) land on or above it. Two methods built on different principles flag the same handful of pairs.",
       },
     ],
@@ -255,14 +251,10 @@ const copy = {
     anomalyBody:
       "Tri pohľady z výstupov pipeline, jeden interaktívny, každý nesie zistenie:",
     anomalies: [
-      {
-        img: "/thesis/feature-correlation.png",
-        title: "Štyri signály zostávajú nezávislé",
+      {        title: "Štyri signály zostávajú nezávislé",
         desc: "Štyri príznaky kolúzie sa takmer neprekrývajú. Najsilnejšia väzba je len mierne -0,49 medzi variabilitou úspor a počtom uchádzačov. Keďže každý príznak nesie vlastnú informáciu, dvojica musí pôsobiť nezvyčajne na viacerých osiach naraz, čo drží počet falošných poplachov nízko.",
       },
-      {
-        img: "/thesis/if-score-by-cluster.png",
-        title: "Neobvyklé zhluky majú aj vysoké skóre",
+      {        title: "Neobvyklé zhluky majú aj vysoké skóre",
         desc: "Každú dvojicu ohodnotí Isolation Forest a skóre sa zoskupia podľa DBSCAN zhluku: normálny zhluk s 561 dvojicami (Z0) leží hlboko pod hranicou 85. percentilu, kým drobné okrajové zhluky (Z1, Z4, Z5) sedia na nej alebo nad ňou. Dve metódy postavené na odlišných princípoch označia tú istú hŕstku dvojíc.",
       },
     ],

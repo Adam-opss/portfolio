@@ -125,19 +125,13 @@ const copy = {
     anomalyBody:
       "Three charts from the analysis, each carrying one finding:",
     anomalies: [
-      {
-        img: "/logistics/cost-revenue-regression.png",
-        title: "Cost predicts revenue, so the gaps can be filled",
+      {        title: "Cost predicts revenue, so the gaps can be filled",
         desc: "Across the 1,592 completed orders, cost and revenue move together almost perfectly (r = 0.967, R² = 0.94). That relationship is strong enough to rebuild the missing revenue with a simple regression at about 10.6% average error, turning an unusable third of the data into something analysable.",
       },
-      {
-        img: "/logistics/missing-revenue-pattern.png",
-        title: "The missing revenue is a system gap, not noise",
+      {        title: "The missing revenue is a system gap, not noise",
         desc: "Revenue is 0% available from April to December 2025 and 100% from January 2026 onward. That clean break points to a delayed export from the invoicing system rather than random data loss, which is exactly the case where regression imputation is defensible.",
       },
-      {
-        img: "/logistics/route-clusters.png",
-        title: "Every route falls into one of four strategies",
+      {        title: "Every route falls into one of four strategies",
         desc: "Clustering routes on frequency, average profit, and distance splits them into four groups: core routes to protect, premium occasional routes to grow, high-volume low-margin routes to renegotiate, and marginal routes to review. Frequency alone is misleading; the busiest route is not the most profitable.",
       },
     ],
@@ -261,19 +255,13 @@ const copy = {
     anomalyBody:
       "Tri grafy z analýzy, každý nesie jedno zistenie:",
     anomalies: [
-      {
-        img: "/logistics/cost-revenue-regression.png",
-        title: "Náklady predpovedajú výnosy, medzery sa dajú doplniť",
+      {        title: "Náklady predpovedajú výnosy, medzery sa dajú doplniť",
         desc: "Naprieč 1 592 dokončenými objednávkami sa náklady a výnosy pohybujú takmer dokonale spolu (r = 0,967, R² = 0,94). Tento vzťah je dosť silný na obnovenie chýbajúcich výnosov jednoduchou regresiou s priemernou chybou okolo 10,6 %, čím sa nepoužiteľná tretina dát stane analyzovateľnou.",
       },
-      {
-        img: "/logistics/missing-revenue-pattern.png",
-        title: "Chýbajúce výnosy sú systémová medzera, nie šum",
+      {        title: "Chýbajúce výnosy sú systémová medzera, nie šum",
         desc: "Výnosy sú dostupné na 0 % od apríla do decembra 2025 a na 100 % od januára 2026. Tento čistý zlom ukazuje na oneskorený export z fakturačného systému, nie na náhodnú stratu dát, čo je presne prípad, kde je regresná imputácia obhájiteľná.",
       },
-      {
-        img: "/logistics/route-clusters.png",
-        title: "Každá trasa spadá do jednej zo štyroch stratégií",
+      {        title: "Každá trasa spadá do jednej zo štyroch stratégií",
         desc: "Zhlukovanie trás podľa frekvencie, priemerného zisku a vzdialenosti ich rozdelí do štyroch skupín: nosné trasy chrániť, prémiové príležitostné rozvíjať, vysokoobjemové s nízkou maržou prevyjednať a okrajové prehodnotiť. Samotná frekvencia klame; najvyťaženejšia trasa nie je najziskovejšia.",
       },
     ],
