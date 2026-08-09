@@ -121,6 +121,7 @@ interface ExpText {
   role: string;
   summary: string;
   achievements: string[];
+  tech?: string[];
 }
 
 const expSk: Record<string, ExpText> = {
@@ -133,6 +134,7 @@ const expSk: Record<string, ExpText> = {
       "Koordinujem účty, dokumentáciu a prideľovanie prístupov naprieč tímami.",
       "Udržiavam procesy kontraktorov bezpečné, prehľadné a spoľahlivé popri dennom štúdiu.",
     ],
+    tech: ["Onboarding", "Prístupy / IAM", "Bezpečnosť", "Offboarding", "Procesy"],
   },
   lidl: {
     role: "Predavač (brigáda)",
@@ -142,6 +144,7 @@ const expSk: Record<string, ExpText> = {
       "Spoľahlivý výkon v rýchlom tíme popri štúdiu.",
       "Vybudoval som si pracovitosť, time management a zákaznícke zručnosti.",
     ],
+    tech: ["Tímovosť", "Time management", "Zákaznícky servis"],
   },
 };
 
@@ -250,6 +253,7 @@ export const portfolioSk: PortfolioConfig = {
       role: o?.role ?? e.role,
       summary: o?.summary ?? e.summary,
       achievements: o?.achievements ?? e.achievements,
+      tech: o?.tech ?? e.tech,
       location: "Košice, Slovensko",
     };
   }),

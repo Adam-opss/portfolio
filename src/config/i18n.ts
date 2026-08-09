@@ -63,6 +63,8 @@ export interface UIStrings {
     titleAccent: string;
     description: string;
     present: string;
+    current: string;
+    monthsShort: string;
   };
   education: {
     eyebrow: string;
@@ -188,6 +190,8 @@ const en: UIStrings = {
     titleAccent: "experience",
     description: "Where I've applied data and automation to real-world problems.",
     present: "Present",
+    current: "Current",
+    monthsShort: "mo",
   },
   education: {
     eyebrow: "Academics",
@@ -315,6 +319,8 @@ const sk: UIStrings = {
     titleAccent: "skúsenosti",
     description: "Kde som aplikoval dáta a automatizáciu na reálne problémy.",
     present: "súčasnosť",
+    current: "Súčasné",
+    monthsShort: "mes.",
   },
   education: {
     eyebrow: "Akademická pôda",

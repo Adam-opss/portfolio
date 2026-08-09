@@ -411,6 +411,7 @@ export const portfolio: PortfolioConfig = {
         "Coordinate accounts, documentation, and access provisioning across teams.",
         "Keep contractor processes secure, organized, and reliable alongside full-time study.",
       ],
+      tech: ["Onboarding", "Access & IAM", "Security", "Offboarding", "Process"],
     },
     {
       id: "lidl",
@@ -426,6 +427,7 @@ export const portfolio: PortfolioConfig = {
         "Delivered reliable performance in a high-tempo team while studying.",
         "Built a strong work ethic, time management, and customer-service skills.",
       ],
+      tech: ["Teamwork", "Time management", "Customer service"],
     },
   ],
 
