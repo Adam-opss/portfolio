@@ -72,6 +72,10 @@ export interface EducationItem {
   end: string;
   description: string;
   highlights?: string[];
+  /** Progress badge on the timeline. */
+  status?: "upcoming" | "done";
+  /** Standout, relevant coursework shown as chips. */
+  courses?: string[];
 }
 
 export interface Certification {
@@ -435,8 +439,17 @@ export const portfolio: PortfolioConfig = {
       end: "2028",
       description:
         "Engineering (master's) programme starting September 2026, focused on artificial intelligence and machine learning.",
+      status: "upcoming",
       highlights: [
         "Deepening expertise in machine learning, deep learning, and intelligent systems.",
+      ],
+      courses: [
+        "Knowledge Discovery",
+        "Scalable Machine Learning",
+        "Natural Language Processing",
+        "Computer Vision",
+        "Spatio-temporal Data",
+        "Explainable AI",
       ],
     },
     {
@@ -448,9 +461,18 @@ export const portfolio: PortfolioConfig = {
       end: "2026",
       description:
         "Three-year programme bridging informatics and economics: data analysis, databases, business intelligence, and machine learning.",
+      status: "done",
       highlights: [
         "Bachelor's thesis: unsupervised ML for detecting collusion in EKS public procurement.",
-        "Coursework: Machine Learning, Statistics, Databases, Data Visualization.",
+        "First place at the Data Visualization course hackathon.",
+      ],
+      courses: [
+        "Languages for Data Analytics",
+        "Business Analytics",
+        "Data Visualization",
+        "Statistics & Probability",
+        "Database Systems",
+        "Knowledge-based Systems",
       ],
     },
     {
@@ -462,7 +484,9 @@ export const portfolio: PortfolioConfig = {
       end: "2023",
       description:
         "A STEM-focused secondary track covering mathematics, informatics, and technical sciences, where my interest in programming and data first took root.",
+      status: "done",
       highlights: ["Built the foundation in math, IT, and technical thinking."],
+      courses: ["Mathematics", "Computer Science", "Programming", "Technical Sciences"],
     },
   ],
 

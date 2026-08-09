@@ -150,6 +150,7 @@ interface EduText {
   school: string;
   description: string;
   highlights?: string[];
+  courses?: string[];
 }
 
 const eduSk: Record<string, EduText> = {
@@ -161,6 +162,14 @@ const eduSk: Record<string, EduText> = {
     highlights: [
       "Prehlbovanie znalostí v strojovom učení, hlbokom učení a inteligentných systémoch.",
     ],
+    courses: [
+      "Objavovanie znalostí",
+      "Škálovateľné strojové učenie",
+      "Spracovanie prirodzeného jazyka",
+      "Počítačové videnie",
+      "Priestorovo-časové dáta",
+      "Vysvetliteľnosť AI",
+    ],
   },
   bsc: {
     degree: "Bakalárske štúdium Hospodárskej informatiky (Bc.)",
@@ -169,7 +178,15 @@ const eduSk: Record<string, EduText> = {
       "Trojročné štúdium spájajúce informatiku a ekonómiu: analýza dát, databázy, business intelligence a strojové učenie.",
     highlights: [
       "Bakalárska práca: nekontrolované ML na detekciu kolúzie vo verejnom obstarávaní (EKS).",
-      "Predmety: strojové učenie, štatistika, databázy, vizualizácia dát.",
+      "Prvé miesto na hackathone z predmetu Dátová vizualizácia.",
+    ],
+    courses: [
+      "Jazyky pre dátovú analytiku",
+      "Podniková analytika",
+      "Vizualizácia dát",
+      "Štatistika a pravdepodobnosť",
+      "Databázové systémy",
+      "Znalostné systémy",
     ],
   },
   highschool: {
@@ -178,6 +195,7 @@ const eduSk: Record<string, EduText> = {
     description:
       "Stredoškolské štúdium so zameraním na STEM – matematika, informatika a technické predmety, kde sa zrodil môj záujem o programovanie a dáta.",
     highlights: ["Základ v matematike, IT a technickom myslení."],
+    courses: ["Matematika", "Informatika", "Programovanie", "Technické vedy"],
   },
 };
 
@@ -244,6 +262,7 @@ export const portfolioSk: PortfolioConfig = {
       school: o?.school ?? ed.school,
       description: o?.description ?? ed.description,
       highlights: o?.highlights ?? ed.highlights,
+      courses: o?.courses ?? ed.courses,
       location: ed.location.replace("Slovakia", "Slovensko"),
     };
   }),

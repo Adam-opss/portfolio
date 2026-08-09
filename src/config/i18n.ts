@@ -69,6 +69,9 @@ export interface UIStrings {
     title: string;
     titleAccent: string;
     description: string;
+    coursework: string;
+    upcoming: string;
+    done: string;
   };
   stack: {
     eyebrow: string;
@@ -192,6 +195,9 @@ const en: UIStrings = {
     titleAccent: "learning",
     description:
       "My academic foundation in data, mathematics, and computer science.",
+    coursework: "Key coursework",
+    upcoming: "Starting Sept 2026",
+    done: "Completed",
   },
   stack: {
     eyebrow: "Toolbox",
@@ -316,6 +322,9 @@ const sk: UIStrings = {
     titleAccent: "štúdium",
     description:
       "Môj akademický základ v dátach, matematike a informatike.",
+    coursework: "Kľúčové predmety",
+    upcoming: "Od septembra 2026",
+    done: "Ukončené",
   },
   stack: {
     eyebrow: "Nástroje",
