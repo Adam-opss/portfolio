@@ -20,40 +20,35 @@ export function Education() {
       titleAccent={ui.education.titleAccent}
       description={ui.education.description}
     >
-      <div className="relative mx-auto max-w-3xl">
-        {/* Timeline spine */}
-        <div className="absolute bottom-4 left-[18px] top-3 w-px bg-gradient-to-b from-border via-border to-transparent" />
-
-        <div className="space-y-6">
-          {education.map((item, i) => {
-            const upcoming = item.status === "upcoming";
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.1, duration: 0.55 }}
-                className="relative pl-12"
-              >
-                {/* Node */}
-                <span
-                  className={cn(
-                    "absolute left-0 top-2 flex h-9 w-9 items-center justify-center rounded-full border",
-                    upcoming
-                      ? "border-accent-blue/60 bg-accent-blue/15 text-accent-blue"
-                      : "border-border bg-surface-2/60 text-accent-cyan",
-                  )}
-                >
-                  {upcoming && (
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue/20" />
-                  )}
-                  <GraduationCap className="h-5 w-5" />
-                </span>
-
-                <SpotlightCard className="p-6">
-                  <div className="mb-3 flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-xs text-muted">
+      <div className="grid gap-6 lg:grid-cols-3">
+        {education.map((item, i) => {
+          const upcoming = item.status === "upcoming";
+          return (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.1, duration: 0.55 }}
+              className="h-full"
+            >
+              <SpotlightCard className="flex h-full flex-col p-6">
+                <div className="mb-4 flex items-start justify-between gap-2">
+                  <div
+                    className={cn(
+                      "relative flex h-12 w-12 items-center justify-center rounded-xl border",
+                      upcoming
+                        ? "border-accent-blue/60 bg-accent-blue/15 text-accent-blue"
+                        : "border-border bg-surface-2/60 text-accent-cyan",
+                    )}
+                  >
+                    {upcoming && (
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-xl bg-accent-blue/15" />
+                    )}
+                    <GraduationCap className="h-6 w-6" />
+                  </div>
+                  <div className="flex flex-col items-end gap-1.5">
+                    <span className="rounded-full bg-surface-2/60 px-3 py-1 font-mono text-xs text-muted">
                       {item.start} - {item.end}
                     </span>
                     {item.status && (
@@ -69,55 +64,55 @@ export function Education() {
                       </span>
                     )}
                   </div>
+                </div>
 
-                  <h3 className="font-display text-lg font-semibold text-foreground">
-                    {item.degree}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-accent-blue">
-                    {item.school}
-                  </p>
-                  <p className="text-xs text-muted">{item.location}</p>
+                <h3 className="font-display text-lg font-semibold text-foreground">
+                  {item.degree}
+                </h3>
+                <p className="mt-1 text-sm font-medium text-accent-blue">
+                  {item.school}
+                </p>
+                <p className="text-xs text-muted">{item.location}</p>
 
-                  <p className="mt-4 text-justify text-sm leading-relaxed text-muted">
-                    {item.description}
-                  </p>
+                <p className="mt-4 text-justify text-sm leading-relaxed text-muted">
+                  {item.description}
+                </p>
 
-                  {item.highlights && (
-                    <ul className="mt-4 space-y-2">
-                      {item.highlights.map((h) => (
-                        <li
-                          key={h}
-                          className="flex items-start gap-2 text-sm text-foreground/90"
+                {item.highlights && (
+                  <ul className="mt-4 space-y-2">
+                    {item.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 text-sm text-foreground/90"
+                      >
+                        <Sparkle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-cyan" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {item.courses && item.courses.length > 0 && (
+                  <div className="mt-auto border-t border-border pt-4">
+                    <p className="mb-2 pt-1 text-[11px] font-medium uppercase tracking-widest text-muted">
+                      {ui.education.coursework}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {item.courses.map((c) => (
+                        <span
+                          key={c}
+                          className="rounded-md bg-surface-2/60 px-2 py-0.5 text-[11px] text-muted"
                         >
-                          <Sparkle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-cyan" />
-                          {h}
-                        </li>
+                          {c}
+                        </span>
                       ))}
-                    </ul>
-                  )}
-
-                  {item.courses && item.courses.length > 0 && (
-                    <div className="mt-5 border-t border-border pt-4">
-                      <p className="mb-2 text-[11px] font-medium uppercase tracking-widest text-muted">
-                        {ui.education.coursework}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {item.courses.map((c) => (
-                          <span
-                            key={c}
-                            className="rounded-md bg-surface-2/60 px-2 py-0.5 text-[11px] text-muted"
-                          >
-                            {c}
-                          </span>
-                        ))}
-                      </div>
                     </div>
-                  )}
-                </SpotlightCard>
-              </motion.div>
-            );
-          })}
-        </div>
+                  </div>
+                )}
+              </SpotlightCard>
+            </motion.div>
+          );
+        })}
       </div>
     </Section>
   );
