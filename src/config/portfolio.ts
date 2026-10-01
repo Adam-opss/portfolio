@@ -155,7 +155,7 @@ export const portfolio: PortfolioConfig = {
       "Off the clock you'll find me on the football pitch, running or training, reading, or deep in a side project.",
     ],
     location: "Košice, Slovakia",
-    availability: "Working student · open to AI/data roles",
+    availability: "Working student · focused on data & AI",
     email: "ppalo.adam@gmail.com",
     resumeUrl: "/resume.pdf",
     // Your photo: drop a file named `profile.jpg` into the `portfolio/public`

@@ -215,7 +215,7 @@ const en: UIStrings = {
     title: "Let's build",
     titleAccent: "something",
     description:
-      "Open to internships, junior roles, and interesting data problems. Drop me a line.",
+      "Always happy to talk data, AI, and interesting problems. Drop me a line.",
     findOnline: "Find me online",
     downloadCv: "Download CV",
     replies: "Usually replies within 24 hours.",
@@ -344,7 +344,7 @@ const sk: UIStrings = {
     title: "Poďme spolu",
     titleAccent: "niečo vytvoriť",
     description:
-      "Otvorený stážam, junior pozíciám a zaujímavým dátovým problémom. Napíš mi.",
+      "Rád sa pobavím o dátach, AI a zaujímavých problémoch. Napíš mi.",
     findOnline: "Nájdeš ma online",
     downloadCv: "Stiahnuť CV",
     replies: "Zvyčajne odpoviem do 24 hodín.",

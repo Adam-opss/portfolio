@@ -221,7 +221,7 @@ export const portfolioSk: PortfolioConfig = {
       "Vo voľnom čase ma nájdeš na futbalovom ihrisku, pri behu alebo tréningu, s knihou, alebo ponoreného vo vlastnom projekte.",
     ],
     location: "Košice, Slovensko",
-    availability: "Working student · otvorený AI/dátovým pozíciám",
+    availability: "Working student · venujem sa dátam a AI",
   },
 
   skills: portfolio.skills.map((cat) => ({
