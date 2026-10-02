@@ -150,9 +150,8 @@ export const portfolio: PortfolioConfig = {
     tagline:
       "Turning data into intelligence, and intelligence into decisions.",
     bio: [
-      "I'm a student at the Technical University of Košice. I just finished my bachelor's in Business Informatics and I'm continuing into a master's in Artificial Intelligence, moving from turning data into business decisions toward building the systems that make them. I'm a big believer in AI: I use it in my work almost every day, and I'm convinced it's where the future is headed.",
-      "My work lives where statistics, machine learning, and clean storytelling meet: models that find signal in noise and dashboards that make it impossible to ignore. Most recently that meant unsupervised anomaly detection for collusion in public procurement, the subject of my bachelor's thesis.",
-      "Off the clock you'll find me on the football pitch, running or training, reading, or deep in a side project.",
+      "I'm a student at the Technical University of Košice. I just finished my bachelor's in Business Informatics and I'm continuing into a master's in Artificial Intelligence. I'm a big believer in AI: I use it almost every day and I'm convinced it's where the future is headed.",
+      "My work lives where statistics, machine learning, and clean storytelling meet: models that find signal in noise and dashboards that make it impossible to ignore. Off the clock, you'll find me on the football pitch, running, reading, or deep in a side project.",
     ],
     location: "Košice, Slovakia",
     availability: "Working student · focused on data & AI",
@@ -441,8 +440,7 @@ export const portfolio: PortfolioConfig = {
       summary:
         "A part-time role in a fast-paced retail environment, balanced alongside full-time studies.",
       achievements: [
-        "Delivered reliable performance in a high-tempo team while studying.",
-        "Built a strong work ethic, time management, and customer-service skills.",
+        "Reliable performance in a high-tempo team while studying full-time, building work ethic and customer-service skills.",
       ],
       tech: ["Teamwork", "Time management", "Customer service"],
     },

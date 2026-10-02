@@ -152,8 +152,7 @@ const expSk: Record<string, ExpText> = {
     summary:
       "Brigáda v rýchlom maloobchodnom prostredí popri dennom štúdiu.",
     achievements: [
-      "Spoľahlivý výkon v rýchlom tíme popri štúdiu.",
-      "Vybudoval som si pracovitosť, time management a zákaznícke zručnosti.",
+      "Spoľahlivý výkon v rýchlom tíme popri dennom štúdiu, kde som si vybudoval pracovitosť a zákaznícke zručnosti.",
     ],
     tech: ["Tímovosť", "Time management", "Zákaznícky servis"],
   },
@@ -227,9 +226,8 @@ export const portfolioSk: PortfolioConfig = {
     ],
     tagline: "Mením dáta na inteligenciu a inteligenciu na rozhodnutia.",
     bio: [
-      "Som študent na Technickej univerzite v Košiciach. Práve som dokončil bakalára z Hospodárskej informatiky a pokračujem na inžinierskom štúdiu Umelej inteligencie – od premeny dát na obchodné rozhodnutia sa posúvam k tvorbe systémov, ktoré tie rozhodnutia robia. Som veľký fanúšik AI: využívam ju v práci takmer každý deň a som presvedčený, že práve za ňou je budúcnosť.",
-      "Moja práca stojí na priesečníku štatistiky, strojového učenia a čistého rozprávania dátami: modely, ktoré nájdu signál v šume, a dashboardy, ktoré sa nedajú prehliadnuť. Naposledy to bola nekontrolovaná detekcia anomálií pri kolúzii vo verejnom obstarávaní – téma mojej bakalárskej práce.",
-      "Vo voľnom čase ma nájdeš na futbalovom ihrisku, pri behu alebo tréningu, s knihou, alebo ponoreného vo vlastnom projekte.",
+      "Som študent na Technickej univerzite v Košiciach. Práve som dokončil bakalára z Hospodárskej informatiky a pokračujem na inžinierskom štúdiu Umelej inteligencie. Som veľký fanúšik AI: využívam ju v práci takmer každý deň a som presvedčený, že práve za ňou je budúcnosť.",
+      "Moja práca stojí na priesečníku štatistiky, strojového učenia a čistého rozprávania dátami: modely, ktoré nájdu signál v šume, a dashboardy, ktoré sa nedajú prehliadnuť. Vo voľnom čase ma nájdeš na futbalovom ihrisku, pri behu, s knihou alebo ponoreného vo vlastnom projekte.",
     ],
     location: "Košice, Slovensko",
     availability: "Working student · venujem sa dátam a AI",
