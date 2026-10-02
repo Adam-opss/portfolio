@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, CheckCircle2 } from "lucide-react";
 import { type ExperienceItem } from "@/config/portfolio";
@@ -60,6 +61,43 @@ export function Experience() {
   );
 }
 
+function CompanyMark({
+  item,
+  current,
+}: {
+  item: ExperienceItem;
+  current: boolean;
+}) {
+  const [error, setError] = useState(false);
+  const showLogo = Boolean(item.logo) && !error;
+  const monogram = item.company.charAt(0).toUpperCase();
+
+  return (
+    <div
+      className={cn(
+        "flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border",
+        showLogo
+          ? "border-border bg-white"
+          : current
+            ? "border-accent-blue/40 bg-accent-blue/10 text-accent-blue"
+            : "border-border bg-surface-2/60 text-foreground",
+      )}
+    >
+      {showLogo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={item.logo}
+          alt={item.company}
+          onError={() => setError(true)}
+          className="h-8 w-8 object-contain grayscale transition duration-500 group-hover:grayscale-0"
+        />
+      ) : (
+        <span className="font-display text-lg font-semibold">{monogram}</span>
+      )}
+    </div>
+  );
+}
+
 function TimelineCard({
   item,
   index,
@@ -70,7 +108,6 @@ function TimelineCard({
   const { ui } = useLanguage();
   const current = item.end === "Present";
   const months = durationMonths(item.start, item.end);
-  const monogram = item.company.charAt(0).toUpperCase();
 
   return (
     <motion.div
@@ -95,22 +132,12 @@ function TimelineCard({
 
       <div
         className={cn(
-          "rounded-2xl border bg-surface/60 p-5 backdrop-blur transition-colors",
+          "group rounded-2xl border bg-surface/60 p-5 backdrop-blur transition-colors",
           current ? "border-accent-blue/40" : "border-border",
         )}
       >
         <div className="flex items-start gap-4">
-          {/* Company monogram */}
-          <div
-            className={cn(
-              "hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl border font-display text-lg font-semibold sm:flex",
-              current
-                ? "border-accent-blue/40 bg-accent-blue/10 text-accent-blue"
-                : "border-border bg-surface-2/60 text-foreground",
-            )}
-          >
-            {monogram}
-          </div>
+          <CompanyMark item={item} current={current} />
 
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
