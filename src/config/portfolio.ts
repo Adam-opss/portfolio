@@ -397,13 +397,30 @@ export const portfolio: PortfolioConfig = {
 
   experience: [
     {
+      id: "syntax-ds",
+      role: "Working Student, Advanced Analytics & Data Science",
+      company: "Syntax",
+      logo: "",
+      location: "Košice, Slovakia",
+      start: "Oct 2026",
+      end: "Present",
+      summary:
+        "Joined Syntax's Advanced Analytics and Data Science team as a working student, bringing my data and machine-learning background to real business problems.",
+      achievements: [
+        "Support the team across the analytics workflow: data preparation, analysis, and modelling.",
+        "Apply Python, SQL, and machine learning to turn raw data into decisions.",
+        "Build clear visualizations and reporting that make insights easy to act on.",
+      ],
+      tech: ["Python", "SQL", "Machine Learning", "Data Analysis", "Data Visualization"],
+    },
+    {
       id: "syntax",
       role: "Working Student, Contractor Management",
       company: "Syntax",
       logo: "",
       location: "Košice, Slovakia",
       start: "Jan 2026",
-      end: "Present",
+      end: "Sep 2026",
       summary:
         "Owning the company's contractor lifecycle end to end, from onboarding through security and access to offboarding.",
       achievements: [

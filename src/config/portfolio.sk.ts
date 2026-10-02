@@ -125,6 +125,17 @@ interface ExpText {
 }
 
 const expSk: Record<string, ExpText> = {
+  "syntax-ds": {
+    role: "Working Student, pokročilá analytika a data science",
+    summary:
+      "Nastúpil som do tímu Advanced Analytics a Data Science v Syntaxe ako working student a prinášam svoje znalosti z dát a strojového učenia na reálne biznis problémy.",
+    achievements: [
+      "Podporujem tím naprieč analytickým procesom: príprava dát, analýza a modelovanie.",
+      "Využívam Python, SQL a strojové učenie na premenu surových dát na rozhodnutia.",
+      "Tvorím prehľadné vizualizácie a reporting, ktoré uľahčujú konať na základe zistení.",
+    ],
+    tech: ["Python", "SQL", "Strojové učenie", "Analýza dát", "Vizualizácia dát"],
+  },
   syntax: {
     role: "Working Student, správa kontraktorov",
     summary:
