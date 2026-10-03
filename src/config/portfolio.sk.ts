@@ -171,7 +171,7 @@ const eduSk: Record<string, EduText> = {
     degree: "Magisterské štúdium Umelej inteligencie (Ing.)",
     school: "Technická univerzita v Košiciach",
     description:
-      "Inžinierske (magisterské) štúdium so začiatkom v septembri 2026, zamerané na umelú inteligenciu a strojové učenie.",
+      "Inžinierske (magisterské) štúdium umelej inteligencie a strojového učenia, začaté v septembri 2026.",
     highlights: [
       "Prehlbovanie znalostí v strojovom učení, hlbokom učení a inteligentných systémoch.",
     ],

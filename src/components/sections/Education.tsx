@@ -22,7 +22,8 @@ export function Education() {
     >
       <div className="grid gap-6 lg:grid-cols-3">
         {education.map((item, i) => {
-          const upcoming = item.status === "upcoming";
+          const active =
+            item.status === "current" || item.status === "upcoming";
           return (
             <motion.div
               key={item.id}
@@ -32,17 +33,22 @@ export function Education() {
               transition={{ delay: i * 0.1, duration: 0.55 }}
               className="h-full"
             >
-              <SpotlightCard className="flex h-full flex-col p-6">
-                <div className="mb-4 flex items-start justify-between gap-2">
+              <SpotlightCard
+                className={cn(
+                  "flex h-full flex-col p-6 hover:-translate-y-1",
+                  active && "shadow-soft ring-2 ring-accent-blue/50",
+                )}
+              >
+                <div className="mb-5 flex items-start justify-between gap-2">
                   <div
                     className={cn(
                       "relative flex h-12 w-12 items-center justify-center rounded-xl border",
-                      upcoming
+                      active
                         ? "border-accent-blue/60 bg-accent-blue/15 text-accent-blue"
                         : "border-border bg-surface-2/60 text-accent-cyan",
                     )}
                   >
-                    {upcoming && (
+                    {active && (
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-xl bg-accent-blue/15" />
                     )}
                     <GraduationCap className="h-6 w-6" />
@@ -51,22 +57,24 @@ export function Education() {
                     <span className="rounded-full bg-surface-2/60 px-3 py-1 font-mono text-xs text-muted">
                       {item.start} - {item.end}
                     </span>
-                    {item.status && (
-                      <span
-                        className={cn(
-                          "rounded-full px-2.5 py-0.5 text-[11px] font-medium",
-                          upcoming
-                            ? "bg-accent-blue/15 text-accent-blue"
-                            : "bg-surface-2/60 text-muted",
-                        )}
-                      >
-                        {upcoming ? ui.education.upcoming : ui.education.done}
-                      </span>
-                    )}
+                    {item.status &&
+                      (active ? (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-blue/15 px-2.5 py-0.5 text-[11px] font-medium text-accent-blue">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-75" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-blue" />
+                          </span>
+                          {ui.education.inProgress}
+                        </span>
+                      ) : (
+                        <span className="rounded-full bg-surface-2/60 px-2.5 py-0.5 text-[11px] font-medium text-muted">
+                          {ui.education.done}
+                        </span>
+                      ))}
                   </div>
                 </div>
 
-                <h3 className="font-display text-lg font-semibold text-foreground">
+                <h3 className="font-display text-lg font-semibold leading-snug text-foreground">
                   {item.degree}
                 </h3>
                 <p className="mt-1 text-sm font-medium text-accent-blue">
@@ -101,7 +109,7 @@ export function Education() {
                       {item.courses.map((c) => (
                         <span
                           key={c}
-                          className="rounded-md bg-surface-2/60 px-2 py-0.5 text-[11px] text-muted"
+                          className="rounded-md bg-surface-2/60 px-2 py-0.5 text-[11px] text-muted transition-colors hover:bg-accent-blue/10 hover:text-foreground"
                         >
                           {c}
                         </span>

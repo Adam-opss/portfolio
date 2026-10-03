@@ -73,6 +73,7 @@ export interface UIStrings {
     description: string;
     coursework: string;
     upcoming: string;
+    inProgress: string;
     done: string;
   };
   stack: {
@@ -201,6 +202,7 @@ const en: UIStrings = {
       "My academic foundation in data, mathematics, and computer science.",
     coursework: "Key coursework",
     upcoming: "Starting Sept 2026",
+    inProgress: "In progress",
     done: "Completed",
   },
   stack: {
@@ -330,6 +332,7 @@ const sk: UIStrings = {
       "Môj akademický základ v dátach, matematike a informatike.",
     coursework: "Kľúčové predmety",
     upcoming: "Od septembra 2026",
+    inProgress: "Prebieha",
     done: "Ukončené",
   },
   stack: {

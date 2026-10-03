@@ -73,7 +73,7 @@ export interface EducationItem {
   description: string;
   highlights?: string[];
   /** Progress badge on the timeline. */
-  status?: "upcoming" | "done";
+  status?: "upcoming" | "current" | "done";
   /** Standout, relevant coursework shown as chips. */
   courses?: string[];
 }
@@ -455,8 +455,8 @@ export const portfolio: PortfolioConfig = {
       start: "2026",
       end: "2028",
       description:
-        "Engineering (master's) programme starting September 2026, focused on artificial intelligence and machine learning.",
-      status: "upcoming",
+        "Engineering (master's) programme in artificial intelligence and machine learning, started in September 2026.",
+      status: "current",
       highlights: [
         "Deepening expertise in machine learning, deep learning, and intelligent systems.",
       ],
