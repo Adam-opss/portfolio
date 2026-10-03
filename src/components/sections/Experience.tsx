@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, CheckCircle2 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MapPin, CheckCircle2, ChevronDown } from "lucide-react";
 import { type ExperienceItem } from "@/config/portfolio";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { Section } from "@/components/ui/Section";
@@ -108,6 +108,7 @@ function TimelineCard({
   const { ui } = useLanguage();
   const current = item.end === "Present";
   const months = durationMonths(item.start, item.end);
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.div
@@ -132,14 +133,18 @@ function TimelineCard({
 
       <div
         className={cn(
-          "group rounded-2xl border bg-surface/60 p-5 backdrop-blur transition-colors",
-          current ? "border-accent-blue/40" : "border-border",
+          "group overflow-hidden rounded-2xl border bg-surface/60 backdrop-blur transition-colors",
+          current ? "border-accent-blue/40" : "border-border hover:border-accent-blue/25",
         )}
       >
-        <div className="flex items-start gap-4">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className="flex w-full items-start gap-4 p-5 text-left"
+        >
           <CompanyMark item={item} current={current} />
 
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <h3 className="font-display text-lg font-semibold text-foreground">
                 {item.role}
@@ -175,34 +180,54 @@ function TimelineCard({
               </span>
             </div>
           </div>
-        </div>
 
-        <div className="mt-4 border-t border-border pt-4">
-          <p className="text-justify text-sm text-muted">{item.summary}</p>
-          <ul className="mt-4 space-y-2">
-            {item.achievements.map((a) => (
-              <li
-                key={a}
-                className="flex items-start gap-2 text-sm text-foreground/90"
-              >
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-cyan" />
-                {a}
-              </li>
-            ))}
-          </ul>
-          {item.tech && (
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {item.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-md bg-surface-2/60 px-2 py-0.5 text-[11px] text-muted"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="mt-1 shrink-0 text-muted"
+          >
+            <ChevronDown className="h-5 w-5" />
+          </motion.span>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="border-t border-border px-5 pb-5 pt-4">
+                <p className="text-justify text-sm text-muted">{item.summary}</p>
+                <ul className="mt-4 space-y-2">
+                  {item.achievements.map((a) => (
+                    <li
+                      key={a}
+                      className="flex items-start gap-2 text-sm text-foreground/90"
+                    >
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-cyan" />
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+                {item.tech && (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {item.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-md bg-surface-2/60 px-2 py-0.5 text-[11px] text-muted"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </motion.div>
           )}
-        </div>
+        </AnimatePresence>
       </div>
     </motion.div>
   );
