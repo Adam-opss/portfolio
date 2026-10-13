@@ -404,13 +404,13 @@ export const portfolio: PortfolioConfig = {
       start: "Oct 2026",
       end: "Present",
       summary:
-        "Joined Syntax's Advanced Analytics and Data Science team as a working student, bringing my data and machine-learning background to real business problems.",
+        "Working student in Syntax's Advanced Analytics and Data Science team, working mainly in Microsoft Fabric and its ecosystem to build analytics solutions end to end.",
       achievements: [
-        "Support the team across the analytics workflow: data preparation, analysis, and modelling.",
-        "Apply Python, SQL, and machine learning to turn raw data into decisions.",
-        "Build clear visualizations and reporting that make insights easy to act on.",
+        "Build and maintain data pipelines, lakehouses, and semantic models in Microsoft Fabric.",
+        "Prepare and transform data with SQL and Python, then shape it into insights.",
+        "Deliver reports and dashboards in Power BI for business stakeholders.",
       ],
-      tech: ["Python", "SQL", "Machine Learning", "Data Analysis", "Data Visualization"],
+      tech: ["Microsoft Fabric", "Power BI", "Data Factory", "Lakehouse", "SQL", "DAX"],
     },
     {
       id: "syntax",

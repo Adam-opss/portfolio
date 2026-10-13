@@ -128,13 +128,13 @@ const expSk: Record<string, ExpText> = {
   "syntax-ds": {
     role: "Working Student, pokročilá analytika a data science",
     summary:
-      "Nastúpil som do tímu Advanced Analytics a Data Science v Syntaxe ako working student a prinášam svoje znalosti z dát a strojového učenia na reálne biznis problémy.",
+      "Working student v tíme Advanced Analytics a Data Science v Syntaxe. Pracujem hlavne v Microsoft Fabric a jeho ekosystéme a staviam analytické riešenia od začiatku do konca.",
     achievements: [
-      "Podporujem tím naprieč analytickým procesom: príprava dát, analýza a modelovanie.",
-      "Využívam Python, SQL a strojové učenie na premenu surových dát na rozhodnutia.",
-      "Tvorím prehľadné vizualizácie a reporting, ktoré uľahčujú konať na základe zistení.",
+      "Staviam a spravujem dátové pipeline, lakehouse a sémantické modely v Microsoft Fabric.",
+      "Pripravujem a transformujem dáta cez SQL a Python a formujem ich na zistenia.",
+      "Dodávam reporty a dashboardy v Power BI pre biznis.",
     ],
-    tech: ["Python", "SQL", "Strojové učenie", "Analýza dát", "Vizualizácia dát"],
+    tech: ["Microsoft Fabric", "Power BI", "Data Factory", "Lakehouse", "SQL", "DAX"],
   },
   syntax: {
     role: "Working Student, správa kontraktorov",
