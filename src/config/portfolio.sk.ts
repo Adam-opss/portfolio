@@ -122,6 +122,7 @@ interface ExpText {
   summary: string;
   achievements: string[];
   tech?: string[];
+  location?: string;
 }
 
 const expSk: Record<string, ExpText> = {
@@ -135,6 +136,18 @@ const expSk: Record<string, ExpText> = {
       "Dodávam reporty a dashboardy v Power BI pre biznis.",
     ],
     tech: ["Microsoft Fabric", "Power BI", "Data Factory", "Lakehouse", "SQL", "DAX"],
+  },
+  lunys: {
+    role: "Dátový analytik / BI / AI analytik",
+    summary:
+      "Part-time dátový analytik v LUNYS, staviam BI a analytiku hlavne v Tableau nad dátami zo Snowflake a ERP systému KARAT.",
+    achievements: [
+      "Modelujem a dopytujem dáta naprieč databázami a Snowflake, zo systému KARAT.",
+      "Tvorím dashboardy a reporty v Tableau, ktoré menia prevádzkové dáta na rozhodnutia.",
+      "Skúmam analytické a AI use-case scenáre na podporu biznisu.",
+    ],
+    tech: ["Tableau", "Snowflake", "SQL", "KARAT ERP", "BI", "Analýza dát"],
+    location: "Remote",
   },
   syntax: {
     role: "Working Student, správa kontraktorov",
@@ -263,7 +276,7 @@ export const portfolioSk: PortfolioConfig = {
       summary: o?.summary ?? e.summary,
       achievements: o?.achievements ?? e.achievements,
       tech: o?.tech ?? e.tech,
-      location: "Košice, Slovensko",
+      location: o?.location ?? "Košice, Slovensko",
     };
   }),
 

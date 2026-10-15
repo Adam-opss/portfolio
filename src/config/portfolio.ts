@@ -413,6 +413,23 @@ export const portfolio: PortfolioConfig = {
       tech: ["Microsoft Fabric", "Power BI", "Data Factory", "Lakehouse", "SQL", "DAX"],
     },
     {
+      id: "lunys",
+      role: "Data / BI / AI Analyst",
+      company: "LUNYS",
+      logo: "",
+      location: "Remote",
+      start: "Oct 2026",
+      end: "Present",
+      summary:
+        "Part-time data analyst at LUNYS, building BI and analytics mainly in Tableau on data from Snowflake and the KARAT ERP.",
+      achievements: [
+        "Model and query data across databases and Snowflake, sourced from the KARAT ERP system.",
+        "Build dashboards and reports in Tableau that turn operational data into decisions.",
+        "Explore analytics and AI use cases to support the business.",
+      ],
+      tech: ["Tableau", "Snowflake", "SQL", "KARAT ERP", "BI", "Data Analysis"],
+    },
+    {
       id: "syntax",
       role: "Working Student, Contractor Management",
       company: "Syntax",
