@@ -38,6 +38,21 @@ export function Experience() {
   const { content, ui } = useLanguage();
   const { experience } = content;
 
+  const groups = [
+    {
+      key: "current",
+      label: ui.experience.currently,
+      accent: true,
+      items: experience.filter((e) => e.end === "Present"),
+    },
+    {
+      key: "past",
+      label: ui.experience.previously,
+      accent: false,
+      items: experience.filter((e) => e.end !== "Present"),
+    },
+  ].filter((g) => g.items.length > 0);
+
   return (
     <Section
       id="experience"
@@ -47,15 +62,38 @@ export function Experience() {
       titleAccent={ui.experience.titleAccent}
       description={ui.experience.description}
     >
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute bottom-0 left-[19px] top-2 w-px bg-border md:left-[23px]" />
+      <div className="space-y-12">
+        {groups.map((group) => (
+          <div key={group.key}>
+            {/* Group heading */}
+            <div className="mb-5 flex items-center gap-3">
+              {group.accent && (
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-blue" />
+                </span>
+              )}
+              <span
+                className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.2em]",
+                  group.accent ? "text-accent-blue" : "text-muted",
+                )}
+              >
+                {group.label}
+              </span>
+              <span className="h-px flex-1 bg-border" />
+            </div>
 
-        <div className="space-y-4">
-          {experience.map((item, i) => (
-            <TimelineCard key={item.id} item={item} index={i} />
-          ))}
-        </div>
+            <div className="relative">
+              <div className="absolute bottom-2 left-[19px] top-2 w-px bg-border md:left-[23px]" />
+              <div className="space-y-4">
+                {group.items.map((item, i) => (
+                  <TimelineCard key={item.id} item={item} index={i} />
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </Section>
   );
@@ -140,7 +178,7 @@ function TimelineCard({
         <button
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          className="flex w-full items-start gap-4 p-5 text-left"
+          className="flex w-full items-start gap-4 p-5 text-left transition-colors hover:bg-surface-2/30"
         >
           <CompanyMark item={item} current={current} />
 
@@ -181,13 +219,17 @@ function TimelineCard({
             </div>
           </div>
 
-          <motion.span
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-1 shrink-0 text-muted"
-          >
-            <ChevronDown className="h-5 w-5" />
-          </motion.span>
+          <span className="mt-1 flex shrink-0 items-center gap-1.5 text-xs font-medium text-muted transition-colors group-hover:text-accent-blue">
+            <span className="hidden sm:inline">
+              {open ? ui.experience.hide : ui.experience.details}
+            </span>
+            <motion.span
+              animate={{ rotate: open ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ChevronDown className="h-4 w-4" />
+            </motion.span>
+          </span>
         </button>
 
         <AnimatePresence initial={false}>

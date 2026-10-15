@@ -65,6 +65,10 @@ export interface UIStrings {
     present: string;
     current: string;
     monthsShort: string;
+    currently: string;
+    previously: string;
+    details: string;
+    hide: string;
   };
   education: {
     eyebrow: string;
@@ -193,6 +197,10 @@ const en: UIStrings = {
     present: "Present",
     current: "Current",
     monthsShort: "mo",
+    currently: "Currently",
+    previously: "Previously",
+    details: "Details",
+    hide: "Hide",
   },
   education: {
     eyebrow: "Academics",
@@ -323,6 +331,10 @@ const sk: UIStrings = {
     present: "súčasnosť",
     current: "Súčasné",
     monthsShort: "mes.",
+    currently: "Aktuálne",
+    previously: "Predošlé",
+    details: "Detaily",
+    hide: "Skryť",
   },
   education: {
     eyebrow: "Akademická pôda",
