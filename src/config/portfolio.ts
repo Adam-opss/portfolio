@@ -416,7 +416,7 @@ export const portfolio: PortfolioConfig = {
       id: "lunys",
       role: "Data / BI / AI Analyst",
       company: "LUNYS",
-      logo: "",
+      logo: "/logos/lunys.png",
       location: "Remote",
       start: "Oct 2026",
       end: "Present",
