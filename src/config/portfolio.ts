@@ -217,6 +217,8 @@ export const portfolio: PortfolioConfig = {
         { name: "DAX", icon: "Function", level: 55, proficiency: "Intermediate" },
         { name: "Streamlit", icon: "Activity", level: 64, proficiency: "Intermediate" },
         { name: "Reporting", icon: "FileBarChart", level: 70, proficiency: "Intermediate" },
+        { name: "Microsoft Fabric", icon: "Boxes", level: 68, proficiency: "Intermediate" },
+        { name: "Tableau Prep", icon: "Wand2", level: 66, proficiency: "Intermediate" },
       ],
     },
     {
@@ -227,6 +229,7 @@ export const portfolio: PortfolioConfig = {
         { name: "Docker", icon: "Container", level: 66, proficiency: "Intermediate" },
         { name: "Docker Compose", icon: "Layers", level: 62, proficiency: "Intermediate" },
         { name: "Vercel", icon: "Cloud", level: 66, proficiency: "Intermediate" },
+        { name: "Data Factory", icon: "CloudCog", level: 64, proficiency: "Intermediate" },
       ],
     },
     {
@@ -249,6 +252,8 @@ export const portfolio: PortfolioConfig = {
         { name: "SQLite", icon: "HardDrive", level: 68, proficiency: "Intermediate" },
         { name: "MySQL", icon: "Database", level: 60, proficiency: "Intermediate" },
         { name: "Prisma", icon: "Boxes", level: 62, proficiency: "Intermediate" },
+        { name: "Snowflake", icon: "Database", level: 68, proficiency: "Intermediate" },
+        { name: "Lakehouse", icon: "Server", level: 64, proficiency: "Intermediate" },
       ],
     },
     {
