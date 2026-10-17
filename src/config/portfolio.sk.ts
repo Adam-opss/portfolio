@@ -140,13 +140,13 @@ const expSk: Record<string, ExpText> = {
   lunys: {
     role: "Dátový analytik / BI / AI analytik",
     summary:
-      "Part-time dátový analytik v LUNYS, staviam BI a analytiku hlavne v Tableau nad dátami zo Snowflake a ERP systému KARAT.",
+      "Part-time dátový analytik v LUNYS, venujem sa hlavne Snowflake, Tableau a Tableau Prep a staviam BI a analytiku nad dátami z ERP systému KARAT.",
     achievements: [
-      "Modelujem a dopytujem dáta naprieč databázami a Snowflake, zo systému KARAT.",
+      "Pripravujem a transformujem dáta cez Tableau Prep a SQL, zo Snowflake a systému KARAT.",
       "Tvorím dashboardy a reporty v Tableau, ktoré menia prevádzkové dáta na rozhodnutia.",
       "Skúmam analytické a AI use-case scenáre na podporu biznisu.",
     ],
-    tech: ["Tableau", "Snowflake", "SQL", "KARAT ERP", "BI", "Analýza dát"],
+    tech: ["Snowflake", "Tableau", "Tableau Prep", "SQL", "KARAT ERP", "BI"],
     location: "Remote",
   },
   syntax: {

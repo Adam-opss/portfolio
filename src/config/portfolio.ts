@@ -421,13 +421,13 @@ export const portfolio: PortfolioConfig = {
       start: "Oct 2026",
       end: "Present",
       summary:
-        "Part-time data analyst at LUNYS, building BI and analytics mainly in Tableau on data from Snowflake and the KARAT ERP.",
+        "Part-time data analyst at LUNYS, working mainly with Snowflake, Tableau, and Tableau Prep to build BI and analytics on data from the KARAT ERP.",
       achievements: [
-        "Model and query data across databases and Snowflake, sourced from the KARAT ERP system.",
+        "Prepare and shape data with Tableau Prep and SQL, sourced from Snowflake and the KARAT ERP system.",
         "Build dashboards and reports in Tableau that turn operational data into decisions.",
         "Explore analytics and AI use cases to support the business.",
       ],
-      tech: ["Tableau", "Snowflake", "SQL", "KARAT ERP", "BI", "Data Analysis"],
+      tech: ["Snowflake", "Tableau", "Tableau Prep", "SQL", "KARAT ERP", "BI"],
     },
     {
       id: "syntax",
