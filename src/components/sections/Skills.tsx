@@ -86,11 +86,7 @@ export function Skills() {
                 >
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {cat.skills.map((skill) => (
-                      <SkillCard
-                        key={skill.name}
-                        skill={skill}
-                        label={ui.skills.proficiency[skill.proficiency]}
-                      />
+                      <SkillCard key={skill.name} skill={skill} />
                     ))}
                   </div>
                 </div>
@@ -138,30 +134,14 @@ export function Skills() {
   );
 }
 
-function SkillCard({ skill, label }: { skill: Skill; label: string }) {
+function SkillCard({ skill }: { skill: Skill }) {
   const Icon = getIcon(skill.icon);
   return (
-    <SpotlightCard className="h-full p-5">
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-2/60 text-accent-blue transition-transform duration-300 group-hover:scale-110">
-          <Icon className="h-5 w-5" />
-        </div>
-        <span className="rounded-full bg-surface-2/60 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted">
-          {label}
-        </span>
+    <SpotlightCard className="flex h-full items-center gap-3 p-4">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-surface-2/60 text-accent-blue transition-transform duration-300 group-hover:scale-110">
+        <Icon className="h-5 w-5" />
       </div>
-      <p className="font-medium text-foreground">{skill.name}</p>
-
-      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-surface-2">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="h-full rounded-full bg-accent-blue"
-        />
-      </div>
-      <p className="mt-1.5 text-right text-[11px] text-muted">{skill.level}%</p>
+      <p className="font-medium leading-snug text-foreground">{skill.name}</p>
     </SpotlightCard>
   );
 }
