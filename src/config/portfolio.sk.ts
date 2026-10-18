@@ -19,17 +19,6 @@ const skillCategory: Record<string, string> = {
   tools: "Nástroje",
 };
 
-const techCategory: Record<string, string> = {
-  Languages: "Jazyky",
-  Data: "Dáta",
-  ML: "ML",
-  BI: "BI",
-  Viz: "Vizualizácia",
-  Databases: "Databázy",
-  Cloud: "Cloud",
-  Tools: "Nástroje",
-};
-
 const tagMap: Record<string, string> = {
   "Machine Learning": "Strojové učenie",
   "Data Analytics": "Dátová analytika",
@@ -249,11 +238,6 @@ export const portfolioSk: PortfolioConfig = {
   skills: portfolio.skills.map((cat) => ({
     ...cat,
     label: pick(skillCategory, cat.id),
-  })),
-
-  techStack: portfolio.techStack.map((item) => ({
-    ...item,
-    category: pick(techCategory, item.category),
   })),
 
   projects: portfolio.projects.map((p) => {

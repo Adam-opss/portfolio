@@ -15,9 +15,6 @@ const Experience = dynamic(() =>
 const Education = dynamic(() =>
   import("@/components/sections/Education").then((m) => m.Education),
 );
-const TechStack = dynamic(() =>
-  import("@/components/sections/TechStack").then((m) => m.TechStack),
-);
 const Stats = dynamic(() =>
   import("@/components/sections/Stats").then((m) => m.Stats),
 );
@@ -34,7 +31,6 @@ export default function HomePage() {
       <Projects />
       <Experience />
       <Education />
-      <TechStack />
       <Stats />
       <Contact />
       <Footer />

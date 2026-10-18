@@ -71,7 +71,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      index={7}
+      index={6}
       eyebrow={ui.contact.eyebrow}
       title={ui.contact.title}
       titleAccent={ui.contact.titleAccent}

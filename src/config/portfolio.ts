@@ -87,12 +87,6 @@ export interface Certification {
   icon: string;
 }
 
-export interface TechItem {
-  name: string;
-  category: string;
-  icon: string;
-}
-
 export interface Stat {
   label: string;
   value: number;
@@ -130,7 +124,6 @@ export interface PortfolioConfig {
   experience: ExperienceItem[];
   education: EducationItem[];
   certifications: Certification[];
-  techStack: TechItem[];
   stats: Stat[];
   testimonials: Testimonial[];
 }
@@ -226,6 +219,8 @@ export const portfolio: PortfolioConfig = {
       label: "Cloud & DevOps",
       icon: "Container",
       skills: [
+        { name: "Azure", icon: "CloudCog", level: 64, proficiency: "Intermediate" },
+        { name: "Google Cloud", icon: "Cloud", level: 60, proficiency: "Intermediate" },
         { name: "Docker", icon: "Container", level: 66, proficiency: "Intermediate" },
         { name: "Docker Compose", icon: "Layers", level: 62, proficiency: "Intermediate" },
         { name: "Vercel", icon: "Cloud", level: 66, proficiency: "Intermediate" },
@@ -562,29 +557,6 @@ export const portfolio: PortfolioConfig = {
       credentialUrl: "https://datacamp.com",
       icon: "Database",
     },
-  ],
-
-  techStack: [
-    { name: "Python", category: "Languages", icon: "FileCode" },
-    { name: "SQL", category: "Languages", icon: "Database" },
-    { name: "TypeScript", category: "Languages", icon: "Braces" },
-    { name: "R", category: "Languages", icon: "Sigma" },
-    { name: "Pandas", category: "Data", icon: "Table" },
-    { name: "NumPy", category: "Data", icon: "Calculator" },
-    { name: "scikit-learn", category: "ML", icon: "Cog" },
-    { name: "Jupyter", category: "Data", icon: "NotebookPen" },
-    { name: "Power BI", category: "BI", icon: "BarChart3" },
-    { name: "Tableau", category: "BI", icon: "AreaChart" },
-    { name: "Matplotlib", category: "Viz", icon: "LineChart" },
-    { name: "Seaborn", category: "Viz", icon: "BarChart3" },
-    { name: "Plotly", category: "Viz", icon: "Activity" },
-    { name: "PostgreSQL", category: "Databases", icon: "Database" },
-    { name: "MySQL", category: "Databases", icon: "Database" },
-    { name: "Azure", category: "Cloud", icon: "CloudCog" },
-    { name: "Google Cloud", category: "Cloud", icon: "Cloud" },
-    { name: "Docker", category: "Tools", icon: "Container" },
-    { name: "Git", category: "Tools", icon: "GitBranch" },
-    { name: "Excel", category: "Tools", icon: "Sheet" },
   ],
 
   stats: [

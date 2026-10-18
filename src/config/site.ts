@@ -28,7 +28,6 @@ export const site = {
     { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
     { id: "education", label: "Education" },
-    { id: "stack", label: "Stack" },
     { id: "contact", label: "Contact" },
   ],
 } as const;

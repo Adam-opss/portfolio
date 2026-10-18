@@ -80,13 +80,6 @@ export interface UIStrings {
     inProgress: string;
     done: string;
   };
-  stack: {
-    eyebrow: string;
-    title: string;
-    titleAccent: string;
-    description: string;
-    all: string;
-  };
   contact: {
     eyebrow: string;
     title: string;
@@ -139,7 +132,6 @@ const en: UIStrings = {
     { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
     { id: "education", label: "Education" },
-    { id: "stack", label: "Stack" },
     { id: "contact", label: "Contact" },
   ],
   common: { search: "Search", language: "Language" },
@@ -213,13 +205,6 @@ const en: UIStrings = {
     inProgress: "In progress",
     done: "Completed",
   },
-  stack: {
-    eyebrow: "Toolbox",
-    title: "Tech",
-    titleAccent: "stack",
-    description: "The languages, frameworks, and platforms I reach for.",
-    all: "All",
-  },
   contact: {
     eyebrow: "Get in touch",
     title: "Let's build",
@@ -273,7 +258,6 @@ const sk: UIStrings = {
     { id: "projects", label: "Projekty" },
     { id: "experience", label: "Skúsenosti" },
     { id: "education", label: "Vzdelanie" },
-    { id: "stack", label: "Technológie" },
     { id: "contact", label: "Kontakt" },
   ],
   common: { search: "Hľadať", language: "Jazyk" },
@@ -346,13 +330,6 @@ const sk: UIStrings = {
     upcoming: "Od septembra 2026",
     inProgress: "Prebieha",
     done: "Ukončené",
-  },
-  stack: {
-    eyebrow: "Nástroje",
-    title: "Technologický",
-    titleAccent: "stack",
-    description: "Jazyky, frameworky a platformy, po ktorých siaham.",
-    all: "Všetky",
   },
   contact: {
     eyebrow: "Ozvi sa",
